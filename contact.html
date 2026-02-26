@@ -71,17 +71,28 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 bg-charcoal z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
+            <div class="flex justify-between items-center h-20">
                 <a href="index.html" class="flex-shrink-0">
-                    <img src="images/transparent logo.png" alt="Marble Arms" class="h-16 w-auto brightness-0 invert hover:opacity-80 transition-opacity">
+                    <img src="images/transparent logo.png" alt="Marble Arms" class="h-12 md:h-16 w-auto brightness-0 invert hover:opacity-80 transition-opacity">
                 </a>
-                <a href="contact.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
+                <a href="contact.html" class="hidden md:block text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="products.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium">Products</a>
+                <a href="manufacturing.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium">OEM & Manufacturing</a>
+                <a href="history.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium">History & Culture</a>
+                <a href="contact.html" class="block py-2 text-hunters-orange font-medium">Contact Us</a>
             </div>
         </div>
     </nav>
 
     <!-- Page Hero -->
-    <section class="steel-dark pt-24 border-b-4 border-hunters-orange">
+    <section class="steel-dark pt-20 border-b-4 border-hunters-orange">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
             <!-- Breadcrumb -->
             <nav class="text-sm mb-4">
@@ -90,7 +101,7 @@
                 <span class="text-hunters-orange">Contact Us</span>
             </nav>
             <div class="section-accent">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">Contact Us</h1>
+                <h1 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">Contact Us</h1>
             </div>
             <p class="text-xl md:text-2xl text-gray-300 max-w-2xl">Get in touch with our team. We're here to help.</p>
         </div>
@@ -101,7 +112,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12">
                 <!-- Contact Form -->
-                <div class="bg-white rounded-xl p-8 md:p-10 card-depth">
+                <div class="bg-white rounded-xl p-5 md:p-10 card-depth">
                     <h2 class="text-2xl font-bold text-charcoal mb-6">Send Us a Message</h2>
                     <form>
                         <div class="mb-6">
@@ -140,7 +151,7 @@
                 <!-- Side Info -->
                 <div class="flex flex-col gap-6">
                     <!-- OEM Routing Callout -->
-                    <div class="bg-charcoal rounded-xl p-8 text-white">
+                    <div class="bg-charcoal rounded-xl p-5 md:p-8 text-white">
                         <p class="text-xs text-gray-500 tracking-[0.2em] uppercase mb-3">Firearms Manufacturers</p>
                         <h3 class="text-xl font-bold mb-3">Looking for OEM or custom sight solutions?</h3>
                         <p class="text-gray-300 text-sm leading-relaxed mb-6">We have a dedicated page for OEM programs, engineering consultations, volume pricing, and PPAP inquiries. Our team responds within one business day.</p>
@@ -150,7 +161,7 @@
                     </div>
 
                     <!-- Business Hours -->
-                    <div class="bg-white rounded-xl p-8 card-depth border-l-4 border-hunters-orange">
+                    <div class="bg-white rounded-xl p-5 md:p-8 card-depth border-l-4 border-hunters-orange">
                         <h3 class="text-lg font-bold text-charcoal mb-4">Business Hours</h3>
                         <div class="space-y-2 text-gray-600">
                             <div class="flex justify-between">
@@ -233,5 +244,27 @@
         </div>
     </footer>
 
+    <!-- Mobile Menu Script -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            });
+        });
+    </script>
 </body>
 </html>

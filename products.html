@@ -111,17 +111,28 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 bg-charcoal z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
+            <div class="flex justify-between items-center h-20">
                 <a href="index.html" class="flex-shrink-0">
-                    <img src="images/transparent logo.png" alt="Marble Arms" class="h-16 w-auto brightness-0 invert hover:opacity-80 transition-opacity">
+                    <img src="images/transparent logo.png" alt="Marble Arms" class="h-12 md:h-16 w-auto brightness-0 invert hover:opacity-80 transition-opacity">
                 </a>
-                <a href="contact.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
+                <a href="contact.html" class="hidden md:block text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="products.html" class="block py-2 text-hunters-orange font-medium">Products</a>
+                <a href="manufacturing.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium">OEM & Manufacturing</a>
+                <a href="history.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium">History & Culture</a>
+                <a href="contact.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium">Contact Us</a>
             </div>
         </div>
     </nav>
 
     <!-- Page Hero -->
-    <section class="steel-dark pt-24 border-b-4 border-hunters-orange">
+    <section class="steel-dark pt-20 border-b-4 border-hunters-orange">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <!-- Breadcrumb -->
             <nav class="text-sm mb-4">
@@ -130,7 +141,7 @@
                 <span class="text-hunters-orange">Products</span>
             </nav>
             <div class="section-accent">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Our Products</h1>
+                <h1 class="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white mb-4">Our Products</h1>
             </div>
             <p class="text-xl text-gray-300 max-w-2xl">Precision-engineered iron sights, all steel construction, made in America since 1892.</p>
         </div>
@@ -166,7 +177,7 @@
     </section>
 
     <!-- Quick Navigation -->
-    <section class="grey-medium border-b-2 border-gray-400 sticky top-24 z-40 shadow-md">
+    <section class="grey-medium border-b-2 border-gray-400 sticky top-20 z-40 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex overflow-x-auto py-4 gap-4 scrollbar-hide">
                 <a href="#front-sights" class="whitespace-nowrap px-4 py-2 bg-white rounded-full text-sm font-medium text-charcoal hover:bg-hunters-orange hover:text-white transition-colors shadow-sm">Front Sights</a>
@@ -179,7 +190,7 @@
     </section>
 
     <!-- Front Sights Section -->
-    <section id="front-sights" class="py-16 grey-texture scroll-mt-36">
+    <section id="front-sights" class="py-16 grey-texture scroll-mt-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-10">
                 <h2 class="text-3xl font-bold text-charcoal mb-3">Front Sights</h2>
@@ -248,7 +259,7 @@
     </section>
 
     <!-- Rear Sights Section -->
-    <section id="rear-sights" class="py-16 grey-medium scroll-mt-36">
+    <section id="rear-sights" class="py-16 grey-medium scroll-mt-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-10">
                 <h2 class="text-3xl font-bold text-charcoal mb-3">Rear Sights</h2>
@@ -316,7 +327,7 @@
     </section>
 
     <!-- Shotgun Beads Section -->
-    <section id="shotgun-beads" class="py-16 grey-texture scroll-mt-36">
+    <section id="shotgun-beads" class="py-16 grey-texture scroll-mt-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-10">
                 <h2 class="text-3xl font-bold text-charcoal mb-3">Shotgun Beads</h2>
@@ -362,7 +373,7 @@
     </section>
 
     <!-- Peep Tang Sights Section -->
-    <section id="peep-tang" class="py-16 grey-medium scroll-mt-36">
+    <section id="peep-tang" class="py-16 grey-medium scroll-mt-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-10">
                 <h2 class="text-3xl font-bold text-charcoal mb-3">Peep Tang Sights</h2>
@@ -408,7 +419,7 @@
     </section>
 
     <!-- Accessories Section -->
-    <section id="accessories" class="py-16 grey-texture scroll-mt-36">
+    <section id="accessories" class="py-16 grey-texture scroll-mt-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-10">
                 <h2 class="text-3xl font-bold text-charcoal mb-3">Accessories</h2>
@@ -543,5 +554,27 @@
         </div>
     </footer>
 
+    <!-- Mobile Menu Script -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            });
+        });
+    </script>
 </body>
 </html>
