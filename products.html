@@ -103,6 +103,7 @@
             transform: scale(1.05);
         }
         html {
+            font-size: 16px;
             scroll-behavior: smooth;
         }
     </style>
@@ -111,11 +112,16 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 bg-charcoal z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+            <div class="flex justify-between items-center h-24">
                 <a href="index.html" class="flex-shrink-0">
-                    <img src="images/transparent logo.png" alt="Marble Arms" class="h-12 md:h-16 w-auto brightness-0 invert hover:opacity-80 transition-opacity">
+                    <img src="images/transparent logo.png" alt="Marble Arms" class="h-14 md:h-20 w-auto brightness-0 invert hover:opacity-80 transition-opacity">
                 </a>
-                <a href="contact.html" class="hidden md:block text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="manufacturing.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">OEM & Manufacturing</a>
+                    <a href="history.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">History & Culture</a>
+                    <a href="products.html" class="text-hunters-orange font-medium text-lg">Products</a>
+                    <a href="contact.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
+                </div>
                 <button id="mobile-menu-btn" class="md:hidden text-white p-2">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -123,16 +129,16 @@
                 </button>
             </div>
             <div id="mobile-menu" class="hidden md:hidden pb-4">
-                <a href="products.html" class="block py-2 text-hunters-orange font-medium">Products</a>
-                <a href="manufacturing.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium">OEM & Manufacturing</a>
-                <a href="history.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium">History & Culture</a>
-                <a href="contact.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium">Contact Us</a>
+                <a href="products.html" class="block py-2 text-hunters-orange font-medium text-lg">Products</a>
+                <a href="manufacturing.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">OEM & Manufacturing</a>
+                <a href="history.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">History & Culture</a>
+                <a href="contact.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
             </div>
         </div>
     </nav>
 
     <!-- Page Hero -->
-    <section class="steel-dark pt-20 border-b-4 border-hunters-orange">
+    <section class="steel-dark pt-24 border-b-4 border-hunters-orange">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <!-- Breadcrumb -->
             <nav class="text-sm mb-4">
@@ -147,328 +153,127 @@
         </div>
     </section>
 
+    <!-- Filter Bar -->
+    <section class="grey-medium border-b-2 border-gray-400 sticky top-24 z-40 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex overflow-x-auto py-4 gap-3 scrollbar-hide">
+                <button data-filter="all" class="filter-btn whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm bg-hunters-orange text-white">All Products</button>
+                <button data-filter="front-sights" class="filter-btn whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm bg-white text-charcoal hover:bg-hunters-orange hover:text-white">Front Sights</button>
+                <button data-filter="rear-sights" class="filter-btn whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm bg-white text-charcoal hover:bg-hunters-orange hover:text-white">Rear Sights</button>
+                <button data-filter="shotgun-beads" class="filter-btn whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm bg-white text-charcoal hover:bg-hunters-orange hover:text-white">Shotgun Beads</button>
+                <button data-filter="peep-tang" class="filter-btn whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm bg-white text-charcoal hover:bg-hunters-orange hover:text-white">Peep Tang Sights</button>
+                <button data-filter="accessories" class="filter-btn whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm bg-white text-charcoal hover:bg-hunters-orange hover:text-white">Accessories</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Cards -->
+    <section class="py-16 grey-texture">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="product-grid">
+
+                <!-- Front Sights Card -->
+                <div class="category-card group relative rounded-2xl overflow-hidden h-80 shadow-lg cursor-pointer" data-category="front-sights">
+                    <img src="images/Front Sight.jpg" alt="Front Sights" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8">
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Front Sights</h3>
+                        <p class="text-gray-300 text-base mb-4 max-w-md">Precision front sights for rifles and handguns. Classic blades to fiber optic.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Uni-Ramp</span>
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Fiber Optic</span>
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Sheard Gold Bead</span>
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Dovetail</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rear Sights Card -->
+                <div class="category-card group relative rounded-2xl overflow-hidden h-80 shadow-lg cursor-pointer" data-category="rear-sights">
+                    <img src="images/handgun and closeup sight.jpg" alt="Rear Sights" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8">
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Rear Sights</h3>
+                        <p class="text-gray-300 text-base mb-4 max-w-md">Adjustable and fixed rear sights for precision shooting.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Sporting</span>
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Folding Leaf</span>
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Semi-Buckhorn</span>
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Flat-Top</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shotgun Beads Card -->
+                <div class="category-card group relative rounded-2xl overflow-hidden h-80 shadow-lg cursor-pointer" data-category="shotgun-beads">
+                    <img src="images/Pic 4.jpg" alt="Shotgun Beads" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8">
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Shotgun Beads</h3>
+                        <p class="text-gray-300 text-base mb-4 max-w-md">High-quality beads for improved target acquisition.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Standard Brass</span>
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Fiber Optic</span>
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Bradley-Style</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Peep Tang Sights Card -->
+                <div class="category-card group relative rounded-2xl overflow-hidden h-80 shadow-lg cursor-pointer" data-category="peep-tang">
+                    <img src="images/Old Product.jpg" alt="Peep Tang Sights" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8">
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Peep Tang Sights</h3>
+                        <p class="text-gray-300 text-base mb-4 max-w-md">Tang-mounted peep sights for lever-action rifles. Superior accuracy through aperture sighting.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Standard</span>
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Improved</span>
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Folding</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accessories Card (full width) -->
+                <div class="category-card group relative rounded-2xl overflow-hidden h-80 shadow-lg cursor-pointer md:col-span-2" data-category="accessories">
+                    <div class="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal-light to-charcoal"></div>
+                    <img src="images/Accessories.png" alt="Accessories" class="absolute right-0 top-1/2 -translate-y-1/2 h-64 w-auto object-contain opacity-80 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8">
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Accessories</h3>
+                        <p class="text-gray-300 text-base mb-4 max-w-md">Sight tools, installation accessories, and specialty items.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Catch .22</span>
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Sight Tools</span>
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Height Gauges</span>
+                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Fiber Rods</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Where to Buy -->
     <section id="where-to-buy" class="grey-medium py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-10 items-center">
-                <!-- Left: Text -->
                 <div>
                     <p class="text-xs text-gray-500 tracking-[0.25em] uppercase mb-3">Available Through Authorized Dealers</p>
                     <h2 class="text-3xl md:text-4xl font-bold text-charcoal mb-4">Our products are stocked by America's leading firearms retailers.</h2>
-                    <p class="text-lg text-gray-600 leading-relaxed">Marble Arms sights are sold exclusively through our authorized distributor network — not direct. Find them at the retailers below.</p>
+                    <p class="text-lg text-gray-600 leading-relaxed">Marble Arms sights are sold exclusively through our authorized distributor network, not direct. Find them at the retailers below.</p>
                 </div>
-                <!-- Right: Distributor Cards -->
                 <div class="grid grid-cols-2 gap-4">
-                    <!-- Brownells -->
                     <div class="bg-white rounded-xl p-6 card-depth border-t-4 border-hunters-orange">
                         <h3 class="text-lg font-bold text-charcoal mb-2">Brownells</h3>
                         <p class="text-gray-600 text-sm mb-4">America's largest firearms parts &amp; accessories retailer</p>
                         <a href="https://www.brownells.com" target="_blank" rel="noopener noreferrer" class="text-hunters-orange font-semibold hover:underline text-sm">Shop Now &rarr;</a>
                     </div>
-                    <!-- Midway USA -->
                     <div class="bg-white rounded-xl p-6 card-depth border-t-4 border-hunters-orange">
                         <h3 class="text-lg font-bold text-charcoal mb-2">Midway USA</h3>
                         <p class="text-gray-600 text-sm mb-4">Premier source for shooting, hunting &amp; outdoor products</p>
                         <a href="https://www.midwayusa.com" target="_blank" rel="noopener noreferrer" class="text-hunters-orange font-semibold hover:underline text-sm">Shop Now &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quick Navigation -->
-    <section class="grey-medium border-b-2 border-gray-400 sticky top-20 z-40 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex overflow-x-auto py-4 gap-4 scrollbar-hide">
-                <a href="#front-sights" class="whitespace-nowrap px-4 py-2 bg-white rounded-full text-sm font-medium text-charcoal hover:bg-hunters-orange hover:text-white transition-colors shadow-sm">Front Sights</a>
-                <a href="#rear-sights" class="whitespace-nowrap px-4 py-2 bg-white rounded-full text-sm font-medium text-charcoal hover:bg-hunters-orange hover:text-white transition-colors shadow-sm">Rear Sights</a>
-                <a href="#shotgun-beads" class="whitespace-nowrap px-4 py-2 bg-white rounded-full text-sm font-medium text-charcoal hover:bg-hunters-orange hover:text-white transition-colors shadow-sm">Shotgun Beads</a>
-                <a href="#peep-tang" class="whitespace-nowrap px-4 py-2 bg-white rounded-full text-sm font-medium text-charcoal hover:bg-hunters-orange hover:text-white transition-colors shadow-sm">Peep Tang Sights</a>
-                <a href="#accessories" class="whitespace-nowrap px-4 py-2 bg-white rounded-full text-sm font-medium text-charcoal hover:bg-hunters-orange hover:text-white transition-colors shadow-sm">Accessories</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Front Sights Section -->
-    <section id="front-sights" class="py-16 grey-texture scroll-mt-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-10">
-                <h2 class="text-3xl font-bold text-charcoal mb-3">Front Sights</h2>
-                <p class="text-lg text-gray-600 max-w-3xl">Precision front sights for rifles and handguns. From classic blade designs to modern fiber optic options, our front sights deliver the visibility and durability you demand.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Uni-Ramp Front Sight -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="images/Front Sight.jpg" alt="Uni-Ramp Front Sight" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Uni-Ramp Front Sight</h3>
-                        <p class="text-gray-600 text-sm mb-4">The original universal ramp front sight. Fits most rifles with a simple, secure mounting system. All steel construction.</p>
-                        <span class="inline-block bg-hunters-orange text-white text-xs font-semibold px-3 py-1 rounded-full">Best Seller</span>
-                    </div>
-                </div>
-
-                <!-- Fiber Optic Front Sight -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="images/fifteen.jpg" alt="Fiber Optic Front Sight" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Fiber Optic Front Sight</h3>
-                        <p class="text-gray-600 text-sm mb-4">High-visibility fiber optic technology for fast target acquisition in any lighting condition. Steel housing with replaceable fiber rod.</p>
-                        <span class="inline-block bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">New</span>
-                    </div>
-                </div>
-
-                <!-- Standard Front Sight -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="images/handgun and closeup sight.jpg" alt="Standard Front Sight" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Standard Front Sight</h3>
-                        <p class="text-gray-600 text-sm mb-4">Classic blade-style front sight. Time-tested design, precision machined from solid steel. Available in multiple heights.</p>
-                    </div>
-                </div>
-
-                <!-- Sheard Gold Bead -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="images/Pic 4.jpg" alt="Sheard Gold Bead" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Sheard Gold Bead Front</h3>
-                        <p class="text-gray-600 text-sm mb-4">Iconic gold bead design for superior visibility. The choice of sportsmen for over a century.</p>
-                    </div>
-                </div>
-
-                <!-- Dovetail Front Sight -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&q=80" alt="Dovetail Front Sight" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Dovetail Front Sight</h3>
-                        <p class="text-gray-600 text-sm mb-4">Designed for standard 3/8" dovetail cuts. Easy installation with secure fit. Multiple blade styles available.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Rear Sights Section -->
-    <section id="rear-sights" class="py-16 grey-medium scroll-mt-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-10">
-                <h2 class="text-3xl font-bold text-charcoal mb-3">Rear Sights</h2>
-                <p class="text-lg text-gray-600 max-w-3xl">Adjustable and fixed rear sights for precision shooting. From sporting configurations to folding leaf designs, find the perfect rear sight for your firearm.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Sporting Rear Sight -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="https://images.unsplash.com/photo-1584281722558-ce8a3e06a297?w=600&q=80" alt="Sporting Rear Sight" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Sporting Rear Sight</h3>
-                        <p class="text-gray-600 text-sm mb-4">Fully adjustable for windage and elevation. Precision click adjustments for consistent accuracy. Rugged steel construction.</p>
-                        <span class="inline-block bg-hunters-orange text-white text-xs font-semibold px-3 py-1 rounded-full">Best Seller</span>
-                    </div>
-                </div>
-
-                <!-- Folding Leaf Rear Sight -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&q=80" alt="Folding Leaf Rear Sight" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Folding Leaf Rear Sight</h3>
-                        <p class="text-gray-600 text-sm mb-4">Multi-leaf design for different ranges. Fold-down configuration allows use with scope or open sights. Classic styling.</p>
-                    </div>
-                </div>
-
-                <!-- Bullseye Rear Sight -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=600&q=80" alt="Bullseye Rear Sight" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Bullseye Rear Sight</h3>
-                        <p class="text-gray-600 text-sm mb-4">Precision target-style rear sight with fine windage and elevation adjustments. Designed for competitive shooters.</p>
-                    </div>
-                </div>
-
-                <!-- Flat-Top Rear Sight -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="https://images.unsplash.com/photo-1547844149-d13f946b1f55?w=600&q=80" alt="Flat-Top Rear Sight" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Flat-Top Rear Sight</h3>
-                        <p class="text-gray-600 text-sm mb-4">Low-profile design for a clean sight picture. Windage adjustable with fixed elevation. Streamlined appearance.</p>
-                    </div>
-                </div>
-
-                <!-- Semi-Buckhorn Rear -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="https://images.unsplash.com/photo-1584281722558-ce8a3e06a297?w=600&q=80" alt="Semi-Buckhorn Rear" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Semi-Buckhorn Rear</h3>
-                        <p class="text-gray-600 text-sm mb-4">Traditional semi-buckhorn style with elevation adjustment. Perfect for lever-action rifles and classic firearms.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Shotgun Beads Section -->
-    <section id="shotgun-beads" class="py-16 grey-texture scroll-mt-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-10">
-                <h2 class="text-3xl font-bold text-charcoal mb-3">Shotgun Beads</h2>
-                <p class="text-lg text-gray-600 max-w-3xl">High-quality shotgun beads for improved target acquisition. From standard brass beads to high-visibility fiber optic options.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Standard Bead -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="images/Pic 4.jpg" alt="Standard Bead" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Standard Bead</h3>
-                        <p class="text-gray-600 text-sm mb-4">Classic brass shotgun bead. Threaded base for secure installation. Multiple sizes available to fit most shotgun barrels.</p>
-                    </div>
-                </div>
-
-                <!-- Fiber Optic Bead -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="images/Front Sight.jpg" alt="Fiber Optic Bead" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Fiber Optic Bead</h3>
-                        <p class="text-gray-600 text-sm mb-4">Bright fiber optic bead for enhanced visibility. Rugged construction stands up to heavy use. Available in multiple colors.</p>
-                        <span class="inline-block bg-hunters-orange text-white text-xs font-semibold px-3 py-1 rounded-full">Popular</span>
-                    </div>
-                </div>
-
-                <!-- Bradley-Style Bead -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=600&q=80" alt="Bradley-Style Bead" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Bradley-Style Bead</h3>
-                        <p class="text-gray-600 text-sm mb-4">Traditional Bradley-style ivory-colored bead. Elegant appearance for classic shotguns. Excellent visibility against dark backgrounds.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Peep Tang Sights Section -->
-    <section id="peep-tang" class="py-16 grey-medium scroll-mt-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-10">
-                <h2 class="text-3xl font-bold text-charcoal mb-3">Peep Tang Sights</h2>
-                <p class="text-lg text-gray-600 max-w-3xl">Precision tang-mounted peep sights for lever-action rifles and other long guns. Superior accuracy through aperture-style sighting.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Standard Peep Tang -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="https://images.unsplash.com/photo-1584281722558-ce8a3e06a297?w=600&q=80" alt="Standard Peep Tang" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Standard Peep Tang</h3>
-                        <p class="text-gray-600 text-sm mb-4">Classic tang-mounted peep sight design. Precision aperture for accurate long-range shooting. Fits most lever-action tangs.</p>
-                        <span class="inline-block bg-charcoal text-white text-xs font-semibold px-3 py-1 rounded-full">Heritage Classic</span>
-                    </div>
-                </div>
-
-                <!-- Improved Peep Tang -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&q=80" alt="Improved Peep Tang" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Improved Peep Tang</h3>
-                        <p class="text-gray-600 text-sm mb-4">Updated design with finer adjustments and improved aperture options. Combines classic styling with modern precision.</p>
-                    </div>
-                </div>
-
-                <!-- Folding Peep Tang -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=600&q=80" alt="Folding Peep Tang" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Folding Peep Tang</h3>
-                        <p class="text-gray-600 text-sm mb-4">Fold-down design allows quick transition to open sights or scope use. Maintains zero when folded back up.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Accessories Section -->
-    <section id="accessories" class="py-16 grey-texture scroll-mt-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-10">
-                <h2 class="text-3xl font-bold text-charcoal mb-3">Accessories</h2>
-                <p class="text-lg text-gray-600 max-w-3xl">Sight tools, installation accessories, and specialty items to complete your setup.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Catch .22 -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48 bg-white">
-                        <img src="images/Accessories.png" alt="Catch .22" class="w-full h-full object-contain">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Catch .22</h3>
-                        <p class="text-gray-600 text-sm mb-4">Spent brass catcher for .22 caliber rifles. Attaches quickly and keeps your brass off the ground for easy cleanup.</p>
-                        <span class="inline-block bg-hunters-orange text-white text-xs font-semibold px-3 py-1 rounded-full">Best Seller</span>
-                    </div>
-                </div>
-
-                <!-- Sight Tools -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80" alt="Sight Tools" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Sight Tools</h3>
-                        <p class="text-gray-600 text-sm mb-4">Professional-grade tools for sight installation and adjustment. Includes sight pushers, punches, and specialty wrenches.</p>
-                    </div>
-                </div>
-
-                <!-- Sight Height Gauge -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="images/Old Product.jpg" alt="Sight Height Gauge" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Sight Height Gauge</h3>
-                        <p class="text-gray-600 text-sm mb-4">Precision gauge for measuring sight heights. Essential for selecting the correct replacement sight. Machined steel construction.</p>
-                    </div>
-                </div>
-
-                <!-- Replacement Fiber Rods -->
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-gray-200 card-depth">
-                    <div class="img-container h-48">
-                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80" alt="Replacement Fiber Rods" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6 border-t-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-2">Replacement Fiber Rods</h3>
-                        <p class="text-gray-600 text-sm mb-4">Replacement fiber optic rods for Marble Arms fiber sights. Available in red, green, and orange. Easy self-installation.</p>
                     </div>
                 </div>
             </div>
@@ -573,6 +378,33 @@
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
                 menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            });
+        });
+
+        // Product filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const categoryCards = document.querySelectorAll('.category-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+
+                // Update button styles
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-hunters-orange', 'text-white');
+                    b.classList.add('bg-white', 'text-charcoal');
+                });
+                btn.classList.remove('bg-white', 'text-charcoal');
+                btn.classList.add('bg-hunters-orange', 'text-white');
+
+                // Show/hide cards
+                categoryCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
             });
         });
     </script>
