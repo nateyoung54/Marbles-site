@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pistol Ironsights Configurator | Marble Arms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hunters-orange': '#FF6600',
+                        'hunters-orange-dark': '#E55A00',
+                        'warm-gray': '#F5F5F4',
+                        'charcoal': '#1C1917',
+                        'charcoal-light': '#292524',
+                        'earth-tan': '#A8927D',
+                    },
+                    fontFamily: {
+                        'heading': ['Barlow', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Barlow', sans-serif;
+        }
+        .steel-dark {
+            background-color: #1a1a1a;
+            background-image:
+                linear-gradient(135deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+                linear-gradient(225deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+                linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+                linear-gradient(315deg, rgba(255,255,255,0.02) 25%, transparent 25%);
+            background-size: 20px 20px;
+        }
+        .grey-texture {
+            background-color: #e8e6e3;
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(0,0,0,0.02) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, rgba(0,0,0,0.02) 1px, transparent 1px);
+            background-size: 8px 8px;
+        }
+        .section-accent {
+            border-left: 4px solid #FF6600;
+            padding-left: 1rem;
+        }
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 5.646a.5.5 0 0 1 .708 0L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1.25rem;
+        }
+        select option:disabled {
+            color: #999;
+        }
+    </style>
+</head>
+<body class="font-body text-charcoal-light grey-texture">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-charcoal z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <a href="index.html" class="flex-shrink-0">
+                    <img src="images/transparent logo.png" alt="Marble Arms" class="h-14 md:h-20 w-auto brightness-0 invert hover:opacity-80 transition-opacity">
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="manufacturing.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">OEM & Manufacturing</a>
+                    <a href="history.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">History & Culture</a>
+                    <a href="products.html" class="text-hunters-orange font-medium text-lg">Products</a>
+                    <a href="contact.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="products.html" class="block py-2 text-hunters-orange font-medium text-lg">Products</a>
+                <a href="manufacturing.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">OEM & Manufacturing</a>
+                <a href="history.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">History & Culture</a>
+                <a href="contact.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="steel-dark pt-24 border-b-4 border-hunters-orange">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <nav class="text-sm mb-4">
+                <a href="index.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Home</a>
+                <span class="text-gray-600 mx-2">/</span>
+                <a href="products.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Products</a>
+                <span class="text-gray-600 mx-2">/</span>
+                <span class="text-hunters-orange">Pistol Ironsights</span>
+            </nav>
+            <div class="section-accent">
+                <h1 class="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white mb-4">Pistol Ironsights Configurator</h1>
+            </div>
+            <p class="text-xl text-gray-300 max-w-2xl">Select your firearm and sight options below to find the right fit.</p>
+        </div>
+    </section>
+
+    <!-- Configurator -->
+    <section class="py-16 grey-texture">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12">
+
+                <!-- Left: Product Image -->
+                <div class="lg:w-1/2">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                        <img id="product-image" src="images/New Product non functioning.png" alt="Pistol Ironsight" class="w-full h-auto">
+                    </div>
+                </div>
+
+                <!-- Right: Dropdowns -->
+                <div class="lg:w-1/2">
+                    <div class="space-y-6">
+
+                        <!-- Make -->
+                        <div>
+                            <label for="select-make" class="block text-sm font-semibold text-charcoal uppercase tracking-wide mb-2">Make</label>
+                            <select id="select-make" class="w-full bg-white border-2 border-gray-300 rounded-lg px-4 py-3 text-charcoal font-medium focus:border-hunters-orange focus:outline-none transition-colors cursor-pointer">
+                                <option value="glock">Glock</option>
+                                <option value="sw" disabled>Smith &amp; Wesson -- Coming Soon</option>
+                                <option value="sig" disabled>Sig Sauer -- Coming Soon</option>
+                            </select>
+                        </div>
+
+                        <!-- Model -->
+                        <div>
+                            <label for="select-model" class="block text-sm font-semibold text-charcoal uppercase tracking-wide mb-2">Model</label>
+                            <select id="select-model" class="w-full bg-white border-2 border-gray-300 rounded-lg px-4 py-3 text-charcoal font-medium focus:border-hunters-orange focus:outline-none transition-colors cursor-pointer">
+                                <option value="g19">G19</option>
+                                <option value="g17">G17</option>
+                                <option value="g45">G45</option>
+                                <option value="slimline" disabled>Slimline -- Coming Soon</option>
+                            </select>
+                        </div>
+
+                        <!-- Rear Sight -->
+                        <div>
+                            <label for="select-rear" class="block text-sm font-semibold text-charcoal uppercase tracking-wide mb-2">Rear Sight</label>
+                            <select id="select-rear" class="w-full bg-white border-2 border-gray-300 rounded-lg px-4 py-3 text-charcoal font-medium focus:border-hunters-orange focus:outline-none transition-colors cursor-pointer">
+                                <option value="plain">Plain</option>
+                                <option value="tritium" disabled>Tritium -- Coming Soon</option>
+                            </select>
+                        </div>
+
+                        <!-- Front Sight -->
+                        <div>
+                            <label for="select-front" class="block text-sm font-semibold text-charcoal uppercase tracking-wide mb-2">Front Sight</label>
+                            <select id="select-front" class="w-full bg-white border-2 border-gray-300 rounded-lg px-4 py-3 text-charcoal font-medium focus:border-hunters-orange focus:outline-none transition-colors cursor-pointer">
+                                <option value="plain">Plain</option>
+                                <option value="white-dot">White Dot</option>
+                                <option value="tritium" disabled>Tritium -- Coming Soon</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="mt-8 bg-white rounded-xl p-6 shadow-md border-l-4 border-hunters-orange">
+                        <h3 class="text-lg font-bold text-charcoal mb-2">Your Selection</h3>
+                        <p id="selection-summary" class="text-gray-600">Glock G19 with Plain rear sight and Plain front sight</p>
+                    </div>
+
+                    <!-- Where to Buy Link -->
+                    <div class="mt-6">
+                        <a href="products.html#where-to-buy" class="inline-block bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-3 px-8 rounded-lg text-lg transition-all">
+                            Where to Buy
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="steel-dark text-white pt-16 pb-8 border-t-4 border-hunters-orange">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Products</h4>
+                    <ul class="space-y-2">
+                        <li><a href="products.html#pistol-ironsights" class="text-gray-400 hover:text-hunters-orange transition-colors">Pistol Ironsights</a></li>
+                        <li><a href="products.html#rifle-ironsights" class="text-gray-400 hover:text-hunters-orange transition-colors">Rifle Ironsights</a></li>
+                        <li><a href="products.html#legacy-products" class="text-gray-400 hover:text-hunters-orange transition-colors">Legacy Products</a></li>
+                        <li><a href="products.html#accessories" class="text-gray-400 hover:text-hunters-orange transition-colors">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="history.html" class="text-gray-400 hover:text-hunters-orange transition-colors">History & Culture</a></li>
+                        <li><a href="history.html#history" class="text-gray-400 hover:text-hunters-orange transition-colors">Our History</a></li>
+                        <li><a href="history.html#careers" class="text-gray-400 hover:text-hunters-orange transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-hunters-orange transition-colors">FAQ</a></li>
+                        <li><a href="products.html#where-to-buy" class="text-gray-400 hover:text-hunters-orange transition-colors">Find a Distributor</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Connect</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-hunters-orange transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-hunters-orange transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-hunters-orange transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        </a>
+                    </div>
+                    <a href="#" class="inline-block border border-gray-600 text-gray-300 hover:border-hunters-orange hover:text-hunters-orange px-4 py-2 rounded transition-colors text-sm">
+                        Newsletter Signup
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <img src="images/transparent logo.png" alt="Marble Arms" class="h-10 w-auto brightness-0 invert mb-4 md:mb-0">
+                    <p class="text-gray-400 text-sm text-center md:text-right">
+                        &copy; 2026 Marble Arms. All Steel. All American. Gladstone, Michigan USA.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            });
+        });
+
+        // Configurator
+        const selectMake = document.getElementById('select-make');
+        const selectModel = document.getElementById('select-model');
+        const selectRear = document.getElementById('select-rear');
+        const selectFront = document.getElementById('select-front');
+        const productImage = document.getElementById('product-image');
+        const selectionSummary = document.getElementById('selection-summary');
+
+        const makeLabels = { glock: 'Glock' };
+        const modelLabels = { g19: 'G19', g17: 'G17', g45: 'G45' };
+        const rearLabels = { plain: 'Plain' };
+        const frontLabels = { plain: 'Plain', 'white-dot': 'White Dot' };
+
+        function updateImage() {
+            if (selectFront.value === 'white-dot') {
+                productImage.src = 'images/New product functioning with tritium.png';
+            } else {
+                productImage.src = 'images/New Product non functioning.png';
+            }
+        }
+
+        function updateSummary() {
+            const make = makeLabels[selectMake.value] || selectMake.value;
+            const model = modelLabels[selectModel.value] || selectModel.value;
+            const rear = rearLabels[selectRear.value] || selectRear.value;
+            const front = frontLabels[selectFront.value] || selectFront.value;
+            selectionSummary.textContent = make + ' ' + model + ' with ' + rear + ' rear sight and ' + front + ' front sight';
+        }
+
+        selectFront.addEventListener('change', () => { updateImage(); updateSummary(); });
+        selectMake.addEventListener('change', updateSummary);
+        selectModel.addEventListener('change', updateSummary);
+        selectRear.addEventListener('change', updateSummary);
+    </script>
+</body>
+</html>
