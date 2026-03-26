@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OEM Portfolio | Marble Arms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hunters-orange': '#FF6600',
+                        'hunters-orange-dark': '#E55A00',
+                        'warm-gray': '#F5F5F4',
+                        'charcoal': '#1C1917',
+                        'charcoal-light': '#292524',
+                        'earth-tan': '#A8927D',
+                    },
+                    fontFamily: {
+                        'heading': ['Barlow', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Barlow', sans-serif;
+        }
+        .metal-texture {
+            background-color: #2a2a2a;
+            background-image:
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
+        }
+        .steel-dark {
+            background-color: #1a1a1a;
+            background-image:
+                linear-gradient(135deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+                linear-gradient(225deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+                linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+                linear-gradient(315deg, rgba(255,255,255,0.02) 25%, transparent 25%);
+            background-size: 20px 20px;
+        }
+        .grey-texture {
+            background-color: #e8e6e3;
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(0,0,0,0.02) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, rgba(0,0,0,0.02) 1px, transparent 1px);
+            background-size: 8px 8px;
+        }
+        .grey-medium {
+            background-color: #d4d0ca;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+        }
+        .concrete-texture {
+            background-color: #3a3835;
+            background-image:
+                linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.03) 75%),
+                linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.03) 75%);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+        }
+        .photo-placeholder {
+            background: linear-gradient(135deg, #E7E5E4 0%, #D6D3D1 100%);
+            border: 2px dashed #A8A29E;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .product-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .card-depth {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+        }
+        .section-accent {
+            border-left: 4px solid #FF6600;
+            padding-left: 1rem;
+        }
+        .img-container {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+        }
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .img-container:hover img {
+            transform: scale(1.05);
+        }
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="font-body text-charcoal-light grey-texture">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-charcoal z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <a href="index.html" class="flex-shrink-0">
+                    <img src="images/transparent logo.png" alt="Marble Arms" class="h-14 md:h-20 w-auto brightness-0 invert hover:opacity-80 transition-opacity">
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="manufacturing.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">OEM & Manufacturing</a>
+                    <a href="history.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">History & Culture</a>
+                    <a href="products.html" class="text-hunters-orange font-medium text-lg">Products</a>
+                    <a href="contact.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="products.html" class="block py-2 text-hunters-orange font-medium text-lg">Products</a>
+                <a href="manufacturing.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">OEM & Manufacturing</a>
+                <a href="history.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">History & Culture</a>
+                <a href="contact.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="steel-dark pt-24 border-b-4 border-hunters-orange">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <!-- Breadcrumb -->
+            <nav class="text-sm mb-4">
+                <a href="index.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Home</a>
+                <span class="text-gray-600 mx-2">/</span>
+                <a href="products.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Products</a>
+                <span class="text-gray-600 mx-2">/</span>
+                <span class="text-hunters-orange">OEM</span>
+            </nav>
+            <div class="section-accent">
+                <h1 class="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white mb-4">OEM Portfolio</h1>
+            </div>
+            <p class="text-xl text-gray-300 max-w-2xl">From ironsights to muzzle devices, we machine the components your platform demands.</p>
+        </div>
+    </section>
+
+    <!-- Statement Banner -->
+    <div class="bg-hunters-orange">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+            <p class="text-white font-extrabold text-xl md:text-2xl font-heading tracking-wide">Precision Machined. Partner-Ready. American Made.</p>
+            <p class="text-white/90 text-sm md:text-base mt-1">Marble Arms supplies CNC-machined firearm components to OEM customers across the industry.</p>
+        </div>
+    </div>
+
+    <!-- Ironsights -->
+    <section class="py-16 md:py-24 grey-texture">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div class="img-container h-72 sm:h-80 md:h-96 rounded-2xl overflow-hidden shadow-xl">
+                    <img src="images/handgun and closeup sight.jpg" alt="Ironsights" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-charcoal mb-6 border-l-4 border-hunters-orange pl-4">Ironsights</h2>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-4">Marble Arms supplies precision-machined iron sight components to firearms manufacturers across the industry. Our OEM sights are machined to exacting tolerances and available in a broad range of configurations to match your platform's specifications.</p>
+                    <p class="text-lg text-gray-600 leading-relaxed">We work directly with your engineering team to ensure form, fit, and function.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Muzzle Devices -->
+    <section class="py-16 md:py-24 steel-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div class="lg:order-last img-container h-72 sm:h-80 md:h-96 rounded-2xl overflow-hidden shadow-xl">
+                    <img src="images/FactoryWorkers.jpg" alt="Muzzle Devices" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6 border-l-4 border-hunters-orange pl-4">Muzzle Devices</h2>
+                    <p class="text-lg text-gray-300 leading-relaxed mb-4">Our CNC machining capabilities extend to muzzle devices including flash hiders, compensators, and thread protectors. All components are produced in-house at our Gladstone, Michigan facility using premium steel stock.</p>
+                    <p class="text-lg text-gray-300 leading-relaxed">We hold tight tolerances on thread pitch and concentricity to meet the demands of volume production.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Optic Mounting -->
+    <section class="py-16 md:py-24 grey-texture">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div class="img-container h-72 sm:h-80 md:h-96 rounded-2xl overflow-hidden shadow-xl">
+                    <img src="images/Marbles Employees.png" alt="Optic Mounting" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-charcoal mb-6 border-l-4 border-hunters-orange pl-4">Optic Mounting</h2>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-4">Marble Arms manufactures precision optic mounting components including bases, rings, and rail sections for OEM integration. Our mounting solutions are engineered for repeatability and designed to your specifications.</p>
+                    <p class="text-lg text-gray-600 leading-relaxed">Whether you need a proprietary platform solution or a standard Picatinny interface, we have the capability to deliver.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Precision Firearm Components -->
+    <section class="py-16 md:py-24 steel-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div class="lg:order-last img-container h-72 sm:h-80 md:h-96 rounded-2xl overflow-hidden shadow-xl">
+                    <img src="images/Front Sight.jpg" alt="Precision Firearm Components" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6 border-l-4 border-hunters-orange pl-4">Precision Firearm Components</h2>
+                    <p class="text-lg text-gray-300 leading-relaxed mb-4">Beyond sights and mounting systems, Marble Arms offers contract machining for a range of precision firearm components. We work with manufacturers who require a trusted domestic supplier with over 130 years of industry experience.</p>
+                    <p class="text-lg text-gray-300 leading-relaxed">Our facility handles low- to mid-volume production runs with consistent quality and on-time delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OEM Contact CTA -->
+    <section class="py-16 steel-dark border-y-4 border-hunters-orange">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Partner With Us?</h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Let's talk about your platform's requirements. Our team works directly with OEM customers to deliver components that meet your exact specifications.</p>
+            <a href="contact-oem.html" class="inline-block bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-4 px-8 rounded-lg text-lg transition-all">
+                Contact OEM Sales &rarr;
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="steel-dark text-white pt-16 pb-8 border-t-4 border-hunters-orange">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <!-- Products Column -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Products</h4>
+                    <ul class="space-y-2">
+                        <li><a href="products-consumer.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Consumer Products</a></li>
+                        <li><a href="products-oem.html" class="text-gray-400 hover:text-hunters-orange transition-colors">OEM Portfolio</a></li>
+                        <li><a href="products-consumer.html#where-to-buy" class="text-gray-400 hover:text-hunters-orange transition-colors">Find a Distributor</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company Column -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="history.html" class="text-gray-400 hover:text-hunters-orange transition-colors">History & Culture</a></li>
+                        <li><a href="history.html#history" class="text-gray-400 hover:text-hunters-orange transition-colors">Our History</a></li>
+                        <li><a href="history.html#careers" class="text-gray-400 hover:text-hunters-orange transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Column -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-hunters-orange transition-colors">FAQ</a></li>
+                        <li><a href="contact-oem.html" class="text-gray-400 hover:text-hunters-orange transition-colors">OEM Sales</a></li>
+                    </ul>
+                </div>
+
+                <!-- Connect Column -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Connect</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-hunters-orange transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-hunters-orange transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-hunters-orange transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        </a>
+                    </div>
+                    <a href="#" class="inline-block border border-gray-600 text-gray-300 hover:border-hunters-orange hover:text-hunters-orange px-4 py-2 rounded transition-colors text-sm">
+                        Newsletter Signup
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer Logo and Bottom Bar -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <img src="images/transparent logo.png" alt="Marble Arms" class="h-10 w-auto brightness-0 invert mb-4 md:mb-0">
+                    <p class="text-gray-400 text-sm text-center md:text-right">
+                        &copy; 2026 Marble Arms. All Steel. All American. Gladstone, Michigan USA.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            });
+        });
+    </script>
+</body>
+</html>

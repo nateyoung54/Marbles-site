@@ -29,19 +29,8 @@
         }
     </script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Barlow', sans-serif;
-        }
-        /* Industrial brushed metal texture */
-        .metal-texture {
-            background-color: #2a2a2a;
-            background-image:
-                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px),
-                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
-        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Barlow', sans-serif; }
         .steel-dark {
             background-color: #1a1a1a;
             background-image:
@@ -62,45 +51,31 @@
             background-color: #d4d0ca;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
         }
-        .concrete-texture {
-            background-color: #3a3835;
-            background-image:
-                linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.03) 75%),
-                linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.03) 75%);
-            background-size: 60px 60px;
-            background-position: 0 0, 30px 30px;
-        }
-        .photo-placeholder {
-            background: linear-gradient(135deg, #E7E5E4 0%, #D6D3D1 100%);
-            border: 2px dashed #A8A29E;
-        }
         .card-depth {
             box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
         }
-        .section-accent {
-            border-left: 4px solid #FF6600;
-            padding-left: 1rem;
+        .section-accent { border-left: 4px solid #FF6600; padding-left: 1rem; }
+        .img-container { position: relative; overflow: hidden; }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .img-container:hover img { transform: scale(1.05); }
+        html { font-size: 16px; scroll-behavior: smooth; }
+
+        /* Timeline */
+        .timeline-line {
+            position: absolute;
+            left: 2.25rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #FF6600, #FF660044);
         }
-        .img-container {
-            position: relative;
-            overflow: hidden;
-        }
-        .img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        .img-container:hover img {
-            transform: scale(1.05);
-        }
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
+        @media (min-width: 768px) {
+            .timeline-line { left: 50%; transform: translateX(-1px); }
         }
     </style>
 </head>
-<body class="font-body text-charcoal-light grey-texture">
+<body class="font-body text-charcoal-light">
+
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 bg-charcoal z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -132,7 +107,6 @@
     <!-- Page Hero -->
     <section class="steel-dark pt-24 border-b-4 border-hunters-orange">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-            <!-- Breadcrumb -->
             <nav class="text-sm mb-4">
                 <a href="index.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Home</a>
                 <span class="text-gray-600 mx-2">/</span>
@@ -145,264 +119,205 @@
         </div>
     </section>
 
-    <!-- History Section -->
-    <section id="history" class="py-20 grey-medium scroll-mt-24">
+    <!-- ─────────────────────────────────────────
+         CULTURE
+    ───────────────────────────────────────── -->
+    <div class="bg-hunters-orange">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-4">
+            <span class="text-white font-extrabold text-xs tracking-[0.3em] uppercase">Our Culture</span>
+            <div class="flex-1 h-px bg-white/30"></div>
+        </div>
+    </div>
+
+    <!-- Mission & Purpose -->
+    <section class="pt-16 pb-8 grey-texture">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
-                <div class="bg-white p-5 md:p-8 rounded-xl card-depth">
-                    <h2 class="text-3xl md:text-4xl font-bold text-charcoal mb-6 border-l-4 border-hunters-orange pl-4">Where It All Began</h2>
-                    <p class="text-lg text-gray-600 leading-relaxed">
-                        In 1892, Webster L. Marble founded his company in Gladstone, Michigan with one goal: build tools that outdoorsmen actually need, built to last a lifetime. His first breakthrough, the Universal Rifle Sight, set a standard that iron sights are still measured against today.
-                    </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl p-8 md:p-10 card-depth border-t-4 border-hunters-orange">
+                    <p class="text-xs text-hunters-orange tracking-[0.25em] uppercase font-semibold mb-3">Mission</p>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-charcoal mb-4">Why We Come to Work</h2>
+                    <p class="text-lg text-gray-600 leading-relaxed">To machine the most precise, durable iron sights in America — from solid steel, by skilled hands, in Gladstone, Michigan.</p>
                 </div>
-                <div class="img-container h-48 sm:h-64 md:h-80 lg:h-96 rounded-xl overflow-hidden shadow-xl border-4 border-charcoal">
-                    <img src="images/FactoryWorkers.jpg" alt="Historic Factory" class="w-full h-full object-cover">
-                </div>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
-                <div class="order-2 lg:order-1 img-container h-80 lg:h-96 rounded-xl overflow-hidden shadow-xl border-4 border-charcoal">
-                    <img src="images/Old Product.jpg" alt="Vintage Manufacturing" class="w-full h-full object-cover">
-                </div>
-                <div class="order-1 lg:order-2 bg-white p-8 rounded-xl card-depth">
-                    <h2 class="text-3xl md:text-4xl font-bold text-charcoal mb-6 border-l-4 border-hunters-orange pl-4">A Legacy of Innovation</h2>
-                    <p class="text-lg text-gray-600 leading-relaxed">
-                        Webster Marble held dozens of patents and invented entire product categories, from the Game Getter to the safety axe. Through two World Wars and over a century of change, Marble Arms never stopped building: all steel, precision machined, built to outlast the shooter.
-                    </p>
-                </div>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                <div class="bg-white p-5 md:p-8 rounded-xl card-depth">
-                    <h2 class="text-3xl md:text-4xl font-bold text-charcoal mb-6 border-l-4 border-hunters-orange pl-4">Still Here. Still Building.</h2>
-                    <p class="text-lg text-gray-600 leading-relaxed">
-                        Marble Arms remains in Gladstone, Michigan, the same town where it all started over 130 years ago. The machines are newer, but the commitment is the same. When America's gun makers need sights they can trust, they call Marble Arms.
-                    </p>
-                </div>
-                <div class="img-container h-48 sm:h-64 md:h-80 lg:h-96 rounded-xl overflow-hidden shadow-xl border-4 border-charcoal">
-                    <img src="images/fifteen.jpg" alt="Modern CNC Manufacturing" class="w-full h-full object-cover">
+                <div class="bg-charcoal rounded-2xl p-8 md:p-10 border-t-4 border-hunters-orange">
+                    <p class="text-xs text-hunters-orange tracking-[0.25em] uppercase font-semibold mb-3">Purpose</p>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">Why It Matters</h2>
+                    <p class="text-lg text-gray-300 leading-relaxed">We build tools that shooters trust when it matters. Every part we ship carries 130 years of earned reputation — and the name of this town.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Marble Arms Today -->
-    <section class="py-20 grey-texture">
+    <!-- Values -->
+    <section id="values" class="pt-8 pb-16 grey-texture scroll-mt-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-charcoal mb-4">Marble Arms Today</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Heritage meets modern precision. Here's what defines us now.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-charcoal mb-3">What We Stand For</h2>
+                <p class="text-lg text-gray-600 max-w-xl mx-auto">Not slogans. The actual principles that guide how we work.</p>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8 mb-16">
-                <!-- Modern Manufacturing -->
-                <div class="bg-white rounded-xl p-8 card-depth border-t-4 border-hunters-orange">
-                    <div class="w-14 h-14 bg-charcoal rounded-lg flex items-center justify-center mb-6 shadow-md">
-                        <svg class="w-7 h-7 text-hunters-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-charcoal mb-3">Modern Manufacturing</h3>
-                    <p class="text-gray-600">Multi-axis CNC machining, SPC monitoring, and full PPAP capability. We've invested in the equipment and processes to deliver at any scale our OEM partners need.</p>
-                </div>
-
-                <!-- Our Team -->
-                <div class="bg-white rounded-xl p-8 card-depth border-t-4 border-hunters-orange">
-                    <div class="w-14 h-14 bg-charcoal rounded-lg flex items-center justify-center mb-6 shadow-md">
-                        <svg class="w-7 h-7 text-hunters-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-charcoal mb-3">Our Team</h3>
-                    <p class="text-gray-600">Skilled machinists, many second and third generation, who take personal pride in every part that leaves the shop. Small-town accountability, world-class quality.</p>
-                </div>
-
-                <!-- Built for Today -->
-                <div class="bg-white rounded-xl p-8 card-depth border-t-4 border-hunters-orange">
-                    <div class="w-14 h-14 bg-charcoal rounded-lg flex items-center justify-center mb-6 shadow-md">
-                        <svg class="w-7 h-7 text-hunters-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-charcoal mb-3">Built for Today</h3>
-                    <p class="text-gray-600">From fiber optic sights to OEM programs for America's top manufacturers, we're building the next 130 years on the same foundation of quality and precision.</p>
-                </div>
-            </div>
-
-            <!-- Mission & Purpose Placeholders -->
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-charcoal rounded-xl p-8 text-center">
-                    <h3 class="text-xl font-bold text-white mb-3">Mission Statement</h3>
-                    <p class="text-gray-400 italic">Coming Soon</p>
-                </div>
-                <div class="bg-charcoal rounded-xl p-8 text-center">
-                    <h3 class="text-xl font-bold text-white mb-3">Purpose Statement</h3>
-                    <p class="text-gray-400 italic">Coming Soon</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Values Section -->
-    <section id="values" class="py-20 steel-dark scroll-mt-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">What We Stand For</h2>
-                <p class="text-lg text-gray-300 max-w-2xl mx-auto">The values that guide Marble Arms every day.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                <!-- Customer First -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-white rounded-xl p-6 md:p-8 card-depth border-t-4 border-hunters-orange">
                     <h3 class="text-xl font-bold text-charcoal mb-2">Customer First</h3>
-                    <p class="text-gray-600 text-base">Everything we do starts and ends with the customer. Their success is our success.</p>
+                    <p class="text-gray-600">Everything we do starts and ends with the customer. Their success is our success.</p>
                 </div>
-
-                <!-- Raise The Bar -->
                 <div class="bg-white rounded-xl p-6 md:p-8 card-depth border-t-4 border-hunters-orange">
                     <h3 class="text-xl font-bold text-charcoal mb-2">Raise The Bar</h3>
-                    <p class="text-gray-600 text-base">Never settle for good enough. Always find a way to make it better.</p>
+                    <p class="text-gray-600">Never settle for good enough. Always find a way to make it better.</p>
                 </div>
-
-                <!-- Togetherness -->
                 <div class="bg-white rounded-xl p-6 md:p-8 card-depth border-t-4 border-hunters-orange">
                     <h3 class="text-xl font-bold text-charcoal mb-2">Togetherness</h3>
-                    <p class="text-gray-600 text-base">We win as a team. Every person on the floor matters, and we show up for each other.</p>
+                    <p class="text-gray-600">We win as a team. Every person on the floor matters, and we show up for each other.</p>
                 </div>
-
-                <!-- Quality -->
                 <div class="bg-white rounded-xl p-6 md:p-8 card-depth border-t-4 border-hunters-orange">
                     <h3 class="text-xl font-bold text-charcoal mb-2">Quality</h3>
-                    <p class="text-gray-600 text-base">All steel, precision machined, zero compromises. If it has our name on it, it's built to last.</p>
+                    <p class="text-gray-600">All steel, precision machined, zero compromises. If it has our name on it, it's built to last.</p>
                 </div>
-
-                <!-- Everyone Cleans The Bathroom -->
                 <div class="bg-white rounded-xl p-6 md:p-8 card-depth border-t-4 border-hunters-orange">
                     <h3 class="text-xl font-bold text-charcoal mb-2">Everyone Cleans The Bathroom</h3>
-                    <p class="text-gray-600 text-base">No job is beneath anyone. We stay grounded, open to feedback, and ready to learn.</p>
+                    <p class="text-gray-600">No job is beneath anyone. We stay grounded, open to feedback, and ready to learn.</p>
                 </div>
-
-                <!-- Leadership is Contagious -->
                 <div class="bg-white rounded-xl p-6 md:p-8 card-depth border-t-4 border-hunters-orange">
                     <h3 class="text-xl font-bold text-charcoal mb-2">Leadership is Contagious</h3>
-                    <p class="text-gray-600 text-base">Leadership isn't a title. It's action. When one person steps up, it inspires everyone around them.</p>
+                    <p class="text-gray-600">Leadership isn't a title. It's action. When one person steps up, it lifts everyone around them.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Facility/Team Section -->
-    <section class="py-20 grey-medium">
+    <!-- Careers CTA -->
+    <section id="careers" class="py-12 steel-dark border-b-4 border-hunters-orange scroll-mt-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-charcoal mb-4">Made in Gladstone</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Our home since 1892. A small town in Michigan's Upper Peninsula where craftsmanship is a way of life.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-4 md:gap-8 mb-12">
-                <div class="img-container h-40 sm:h-52 md:h-64 rounded-xl overflow-hidden shadow-lg border-2 border-gray-300">
-                    <img src="images/FactoryWorkers.jpg" alt="Manufacturing Facility" class="w-full h-full object-cover">
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                <div class="img-container h-72 md:h-80 rounded-2xl overflow-hidden shadow-xl">
+                    <img src="images/Marbles Employees.png" alt="The Marble Arms Team" class="w-full h-full object-cover">
                 </div>
-                <div class="img-container h-40 sm:h-52 md:h-64 rounded-xl overflow-hidden shadow-lg border-2 border-gray-300">
-                    <img src="images/Front Sight.jpg" alt="CNC Machining" class="w-full h-full object-cover">
-                </div>
-                <div class="img-container h-40 sm:h-52 md:h-64 rounded-xl overflow-hidden shadow-lg border-2 border-gray-300">
-                    <img src="images/handgun and closeup sight.jpg" alt="Quality Inspection" class="w-full h-full object-cover">
-                </div>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="bg-white p-5 md:p-8 rounded-xl card-depth">
-                    <h3 class="text-2xl font-bold text-charcoal mb-4 border-l-4 border-hunters-orange pl-4">Small Town Values, World-Class Quality</h3>
-                    <p class="text-gray-600 mb-4">
-                        Gladstone, Michigan sits on the shores of Little Bay de Noc in the Upper Peninsula. It's a place where people know their neighbors, where word-of-mouth reputation matters, and where cutting corners isn't just bad business, it's personal.
-                    </p>
-                    <p class="text-gray-600 mb-4">
-                        That small-town accountability is built into everything we do. When you buy a Marble Arms sight, you're not just buying from a company. You're buying from the people who made it, who live down the street from each other, and who take personal pride in their work.
-                    </p>
-                    <p class="text-gray-600">
-                        Many of our team members are hunters and shooters themselves. They use the products they build, and they build them to the standard they'd demand for their own firearms.
-                    </p>
-                </div>
-                <div class="img-container h-48 sm:h-64 md:h-80 rounded-xl overflow-hidden shadow-xl border-4 border-charcoal bg-white">
-                    <img src="images/Webster Marble.png" alt="Webster Marble" class="w-full h-full object-contain">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-3 border-l-4 border-hunters-orange pl-4">Build Something That Lasts</h2>
+                    <p class="text-base text-gray-300 leading-relaxed mb-3">Our team are craftspeople who take personal pride in what they make — many second and third generation. When you work here, your name is on every part you touch.</p>
+                    <p class="text-base text-gray-300 leading-relaxed mb-6">If you're driven and talented, we want to hear from you — whatever your background.</p>
+                    <a href="contact.html" class="inline-block bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-3 px-7 rounded-lg text-base transition-all">
+                        Get In Touch
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="steel-dark py-16 border-y-4 border-hunters-orange">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center">
-                <div>
-                    <div class="text-4xl md:text-5xl font-extrabold text-hunters-orange mb-2">1892</div>
-                    <div class="text-lg font-semibold text-white mb-1">Founded</div>
-                    <div class="text-gray-400 text-sm">Gladstone, Michigan</div>
-                </div>
-                <div>
-                    <div class="text-4xl md:text-5xl font-extrabold text-hunters-orange mb-2">100%</div>
-                    <div class="text-lg font-semibold text-white mb-1">American Made</div>
-                    <div class="text-gray-400 text-sm">Always have been</div>
-                </div>
-                <div>
-                    <div class="text-4xl md:text-5xl font-extrabold text-hunters-orange mb-2">50+</div>
-                    <div class="text-lg font-semibold text-white mb-1">Patents</div>
-                    <div class="text-gray-400 text-sm">Historical innovations</div>
-                </div>
-                <div>
-                    <div class="text-4xl md:text-5xl font-extrabold text-hunters-orange mb-2">3</div>
-                    <div class="text-lg font-semibold text-white mb-1">Generations</div>
-                    <div class="text-gray-400 text-sm">Of family employees</div>
-                </div>
-            </div>
+    <!-- ─────────────────────────────────────────
+         HISTORY
+    ───────────────────────────────────────── -->
+    <div class="bg-hunters-orange">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-4">
+            <span class="text-white font-extrabold text-xs tracking-[0.3em] uppercase">Our History</span>
+            <div class="flex-1 h-px bg-white/30"></div>
         </div>
-    </section>
+    </div>
 
-    <!-- Careers CTA Section -->
-    <section id="careers" class="py-20 grey-texture scroll-mt-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-l-4 border-hunters-orange">
-                <div class="grid lg:grid-cols-2">
-                    <div class="p-5 md:p-12 lg:p-16">
-                        <h2 class="text-3xl md:text-4xl font-bold text-charcoal mb-4">Join Our Team</h2>
-                        <p class="text-lg text-gray-600 mb-6">
-                            We're always looking for skilled craftspeople who take pride in their work. At Marble Arms, you're not just filling a position. You're joining a team that's been building America's finest iron sights for over 130 years.
-                        </p>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-center text-gray-600">
-                                <svg class="w-5 h-5 text-hunters-orange mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                Competitive wages and benefits
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <svg class="w-5 h-5 text-hunters-orange mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                Skilled trades training and development
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <svg class="w-5 h-5 text-hunters-orange mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                Work with a product you can be proud of
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <svg class="w-5 h-5 text-hunters-orange mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                Part of a 130+ year legacy
-                            </li>
-                        </ul>
-                        <a href="contact.html" class="inline-block bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-4 px-8 rounded-lg text-lg transition-all border-b-4 border-hunters-orange-dark">
-                            View Open Positions
-                        </a>
+    <!-- Timeline -->
+    <section id="history" class="py-16 md:py-24 grey-medium scroll-mt-24">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="relative">
+                <!-- Vertical line -->
+                <div class="absolute left-9 top-0 bottom-0 w-0.5 bg-gradient-to-b from-hunters-orange via-hunters-orange to-hunters-orange/20"></div>
+
+                <div class="space-y-12">
+
+                    <!-- 1892 -->
+                    <div class="relative flex gap-8">
+                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10"></div>
+                        </div>
+                        <div class="pb-2">
+                            <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">1892</span>
+                            <h3 class="text-xl font-bold text-charcoal mb-1">Founded in Gladstone, Michigan</h3>
+                            <p class="text-gray-600">Webster L. Marble establishes Marble Arms with one goal: build tools that outdoorsmen can depend on for a lifetime. His Universal Rifle Sight immediately sets a new benchmark for iron sight precision.</p>
+                        </div>
                     </div>
-                    <div class="img-container h-64 lg:h-auto">
-                        <img src="images/Pic 4.jpg" alt="Workshop Team" class="w-full h-full object-cover">
+
+                    <!-- 1898 -->
+                    <div class="relative flex gap-8">
+                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10"></div>
+                        </div>
+                        <div class="pb-2">
+                            <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">1898</span>
+                            <h3 class="text-xl font-bold text-charcoal mb-1">National Recognition</h3>
+                            <p class="text-gray-600">The Marble Game Getter and patented safety axe bring national acclaim, with Webster holding over 50 patents across firearms, camping, and outdoor tools. Marble Arms becomes synonymous with American craftsmanship.</p>
+                        </div>
                     </div>
+
+                    <!-- 1917 -->
+                    <div class="relative flex gap-8">
+                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10"></div>
+                        </div>
+                        <div class="pb-2">
+                            <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">1917</span>
+                            <h3 class="text-xl font-bold text-charcoal mb-1">Supporting the War Effort</h3>
+                            <p class="text-gray-600">Marble Arms supplies sight components to the U.S. military during World War I. Performing under combat conditions cements our reputation for reliability where it counts most.</p>
+                        </div>
+                    </div>
+
+                    <!-- 1942 -->
+                    <div class="relative flex gap-8">
+                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10"></div>
+                        </div>
+                        <div class="pb-2">
+                            <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">1942</span>
+                            <h3 class="text-xl font-bold text-charcoal mb-1">World War II Production</h3>
+                            <p class="text-gray-600">Production again pivots to support American forces. Precision machining at scale becomes embedded in our culture — a legacy our machinists still carry today.</p>
+                        </div>
+                    </div>
+
+                    <!-- 1968 -->
+                    <div class="relative flex gap-8">
+                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10"></div>
+                        </div>
+                        <div class="pb-2">
+                            <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">1968</span>
+                            <h3 class="text-xl font-bold text-charcoal mb-1">Focus Sharpens</h3>
+                            <p class="text-gray-600">Marble Arms narrows its focus exclusively to iron sights and precision firearm components. The Uni-Ramp front sight becomes a fixture on American-made rifles across the country.</p>
+                        </div>
+                    </div>
+
+                    <!-- 1995 -->
+                    <div class="relative flex gap-8">
+                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10"></div>
+                        </div>
+                        <div class="pb-2">
+                            <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">1995</span>
+                            <h3 class="text-xl font-bold text-charcoal mb-1">CNC Comes to Gladstone</h3>
+                            <p class="text-gray-600">Multi-axis CNC machining arrives at the facility. Tolerances tighten, consistency improves, and throughput scales — the old commitment meets new technology without compromise.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2008 -->
+                    <div class="relative flex gap-8">
+                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10"></div>
+                        </div>
+                        <div class="pb-2">
+                            <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">2008</span>
+                            <h3 class="text-xl font-bold text-charcoal mb-1">OEM Program Launches</h3>
+                            <p class="text-gray-600">Marble Arms formalizes its OEM program, supplying precision-machined components directly to America's leading firearms manufacturers. The business grows without leaving Gladstone.</p>
+                        </div>
+                    </div>
+
+                    <!-- Today -->
+                    <div class="relative flex gap-8">
+                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10 ring-4 ring-hunters-orange/30"></div>
+                        </div>
+                        <div class="pb-2">
+                            <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">Today</span>
+                            <h3 class="text-xl font-bold text-charcoal mb-1">Still Here. Still Building.</h3>
+                            <p class="text-gray-600">Marble Arms remains in Gladstone, Michigan — still all-steel, still American made, still family-run. Over 130 years of unbroken production and counting.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -412,19 +327,14 @@
     <footer class="steel-dark text-white pt-16 pb-8 border-t-4 border-hunters-orange">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-                <!-- Products Column -->
                 <div>
                     <h4 class="font-bold text-lg mb-4">Products</h4>
                     <ul class="space-y-2">
-                        <li><a href="products.html#front-sights" class="text-gray-400 hover:text-hunters-orange transition-colors">Front Sights</a></li>
-                        <li><a href="products.html#rear-sights" class="text-gray-400 hover:text-hunters-orange transition-colors">Rear Sights</a></li>
-                        <li><a href="products.html#shotgun-beads" class="text-gray-400 hover:text-hunters-orange transition-colors">Shotgun Beads</a></li>
-                        <li><a href="products.html#peep-tang" class="text-gray-400 hover:text-hunters-orange transition-colors">Peep Tang Sights</a></li>
-                        <li><a href="products.html#accessories" class="text-gray-400 hover:text-hunters-orange transition-colors">Accessories</a></li>
+                        <li><a href="products-consumer.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Consumer Products</a></li>
+                        <li><a href="products-oem.html" class="text-gray-400 hover:text-hunters-orange transition-colors">OEM Portfolio</a></li>
+                        <li><a href="products-consumer.html#where-to-buy" class="text-gray-400 hover:text-hunters-orange transition-colors">Find a Distributor</a></li>
                     </ul>
                 </div>
-
-                <!-- Company Column -->
                 <div>
                     <h4 class="font-bold text-lg mb-4">Company</h4>
                     <ul class="space-y-2">
@@ -433,18 +343,14 @@
                         <li><a href="history.html#careers" class="text-gray-400 hover:text-hunters-orange transition-colors">Careers</a></li>
                     </ul>
                 </div>
-
-                <!-- Support Column -->
                 <div>
                     <h4 class="font-bold text-lg mb-4">Support</h4>
                     <ul class="space-y-2">
                         <li><a href="contact.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Contact Us</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-hunters-orange transition-colors">FAQ</a></li>
-                        <li><a href="products.html#where-to-buy" class="text-gray-400 hover:text-hunters-orange transition-colors">Find a Distributor</a></li>
+                        <li><a href="contact-oem.html" class="text-gray-400 hover:text-hunters-orange transition-colors">OEM Sales</a></li>
                     </ul>
                 </div>
-
-                <!-- Connect Column -->
                 <div>
                     <h4 class="font-bold text-lg mb-4">Connect</h4>
                     <div class="flex space-x-4 mb-4">
@@ -463,8 +369,6 @@
                     </a>
                 </div>
             </div>
-
-            <!-- Footer Logo and Bottom Bar -->
             <div class="border-t border-gray-800 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <img src="images/transparent logo.png" alt="Marble Arms" class="h-10 w-auto brightness-0 invert mb-4 md:mb-0">
@@ -476,7 +380,6 @@
         </div>
     </footer>
 
-    <!-- Mobile Menu Script -->
     <script>
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -484,11 +387,9 @@
 
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-            } else {
-                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
-            }
+            menuIcon.setAttribute('d', mobileMenu.classList.contains('hidden')
+                ? 'M4 6h16M4 12h16M4 18h16'
+                : 'M6 18L18 6M6 6l12 12');
         });
 
         mobileMenu.querySelectorAll('a').forEach(link => {
@@ -498,13 +399,11 @@
             });
         });
 
-        // Handle hash scrolling on page load
         window.addEventListener('load', () => {
             if (window.location.hash) {
                 const target = document.querySelector(window.location.hash);
                 if (target) {
-                    const navHeight = 96;
-                    const y = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    const y = target.getBoundingClientRect().top + window.pageYOffset - 96;
                     window.scrollTo({ top: y, behavior: 'smooth' });
                 }
             }

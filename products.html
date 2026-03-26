@@ -73,14 +73,6 @@
             background: linear-gradient(135deg, #E7E5E4 0%, #D6D3D1 100%);
             border: 2px dashed #A8A29E;
         }
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        .product-card {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
         .card-depth {
             box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
         }
@@ -108,7 +100,7 @@
         }
     </style>
 </head>
-<body class="font-body text-charcoal-light grey-texture">
+<body class="font-body text-charcoal-light">
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 bg-charcoal z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -137,139 +129,41 @@
         </div>
     </nav>
 
-    <!-- Page Hero -->
-    <section class="steel-dark pt-24 border-b-4 border-hunters-orange">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <!-- Breadcrumb -->
-            <nav class="text-sm mb-4">
-                <a href="index.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Home</a>
-                <span class="text-gray-600 mx-2">/</span>
-                <span class="text-hunters-orange">Products</span>
-            </nav>
-            <div class="section-accent">
-                <h1 class="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white mb-4">Our Products</h1>
+    <!-- Audience Chooser -->
+    <section class="pt-24 flex flex-col md:flex-row min-h-screen">
+
+        <!-- Left Panel: Consumer Products -->
+        <a href="products-consumer.html" class="group relative overflow-hidden flex-1 flex items-end min-h-[50vh]">
+            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out group-hover:scale-105"
+                 style="background-image: url('images/handgun and closeup sight.jpg')"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"></div>
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"></div>
+            <div class="absolute top-0 left-0 right-0 h-1 bg-hunters-orange origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></div>
+            <div class="relative z-10 p-8 md:p-12 w-full">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3">Consumer Products</h2>
+                <p class="text-gray-300 text-base md:text-lg mb-6 max-w-sm">Sights and accessories for shooters</p>
+                <span class="inline-flex items-center gap-2 text-hunters-orange text-sm font-bold tracking-widest uppercase">
+                    Browse Products <span class="transition-transform duration-200 group-hover:translate-x-2 inline-block">&rarr;</span>
+                </span>
             </div>
-            <p class="text-xl text-gray-300 max-w-2xl">Precision-engineered iron sights, all steel construction, made in America since 1892.</p>
-        </div>
-    </section>
+        </a>
 
-    <!-- Filter Bar -->
-    <section class="grey-medium border-b-2 border-gray-400 sticky top-24 z-40 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex overflow-x-auto py-4 gap-3 scrollbar-hide">
-                <button data-filter="all" class="filter-btn whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm bg-hunters-orange text-white">All Products</button>
-                <button data-filter="pistol-ironsights" class="filter-btn whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm bg-white text-charcoal hover:bg-hunters-orange hover:text-white">Pistol Ironsights</button>
-                <button data-filter="rifle-ironsights" class="filter-btn whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm bg-white text-charcoal hover:bg-hunters-orange hover:text-white">Rifle Ironsights</button>
-                <button data-filter="legacy-products" class="filter-btn whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm bg-white text-charcoal hover:bg-hunters-orange hover:text-white">Legacy Products</button>
-                <button data-filter="accessories" class="filter-btn whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-sm bg-white text-charcoal hover:bg-hunters-orange hover:text-white">Accessories</button>
+        <!-- Right Panel: OEM & Manufacturing -->
+        <a href="products-oem.html" class="group relative overflow-hidden flex-1 flex items-end min-h-[50vh]">
+            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out group-hover:scale-105"
+                 style="background-image: url('images/FactoryWorkers.jpg')"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20"></div>
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"></div>
+            <div class="absolute top-0 left-0 right-0 h-1 bg-hunters-orange origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></div>
+            <div class="relative z-10 p-8 md:p-12 w-full">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3">OEM Portfolio</h2>
+                <p class="text-gray-300 text-base md:text-lg mb-6 max-w-sm">Precision components for firearms manufacturers</p>
+                <span class="inline-flex items-center gap-2 text-hunters-orange text-sm font-bold tracking-widest uppercase">
+                    View Portfolio <span class="transition-transform duration-200 group-hover:translate-x-2 inline-block">&rarr;</span>
+                </span>
             </div>
-        </div>
-    </section>
+        </a>
 
-    <!-- Category Cards -->
-    <section class="py-16 grey-texture">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="product-grid">
-
-                <!-- Pistol Ironsights Card -->
-                <a href="pistol-ironsights.html" class="category-card group relative rounded-2xl overflow-hidden h-80 shadow-lg cursor-pointer block" data-category="pistol-ironsights">
-                    <img src="images/handgun and closeup sight.jpg" alt="Pistol Ironsights" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-8">
-                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Pistol Ironsights</h3>
-                        <p class="text-gray-300 text-base mb-4 max-w-md">Front and rear sights engineered for handguns. Fixed, adjustable, and fiber optic options.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Front Sights</span>
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Rear Sights</span>
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Fiber Optic</span>
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Night Sights</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Rifle Ironsights Card -->
-                <div class="category-card group relative rounded-2xl overflow-hidden h-80 shadow-lg cursor-pointer" data-category="rifle-ironsights">
-                    <img src="images/Front Sight.jpg" alt="Rifle Ironsights" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-8">
-                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Rifle Ironsights</h3>
-                        <p class="text-gray-300 text-base mb-4 max-w-md">Complete sight systems for rifles and shotguns. Ramp fronts, adjustable rears, beads, and peep tang sights.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Uni-Ramp</span>
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Shotgun Beads</span>
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Peep Tang</span>
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Semi-Buckhorn</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Legacy Products Card -->
-                <div class="category-card group relative rounded-2xl overflow-hidden h-80 shadow-lg cursor-pointer" data-category="legacy-products">
-                    <img src="images/Old Product.jpg" alt="Legacy Products" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-8">
-                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Legacy Products</h3>
-                        <p class="text-gray-300 text-base mb-4 max-w-md">Discontinued and historical items from over 130 years of Marble Arms craftsmanship.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Discontinued</span>
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Historical</span>
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Collector</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Accessories Card -->
-                <div class="category-card group relative rounded-2xl overflow-hidden h-80 shadow-lg cursor-pointer" data-category="accessories">
-                    <img src="images/Accessories.png" alt="Accessories" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-8">
-                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Accessories</h3>
-                        <p class="text-gray-300 text-base mb-4 max-w-md">Sight tools, installation accessories, and specialty items.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Catch .22</span>
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Sight Tools</span>
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Height Gauges</span>
-                            <span class="bg-white/20 backdrop-blur text-white text-xs font-medium px-3 py-1 rounded-full">Fiber Rods</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Where to Buy -->
-    <section id="where-to-buy" class="grey-medium py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <p class="text-xs text-gray-500 tracking-[0.25em] uppercase mb-3">Available Through Authorized Dealers</p>
-                <h2 class="text-3xl md:text-4xl font-bold text-charcoal mb-4">Find Marble Arms at These Retailers</h2>
-                <p class="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">Our sights are sold exclusively through authorized distributors, not direct. Shop with confidence from these trusted partners.</p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <a href="https://www.brownells.com" target="_blank" rel="noopener noreferrer" class="bg-white rounded-xl p-8 card-depth border-t-4 border-hunters-orange hover:shadow-lg transition-shadow group">
-                    <h3 class="text-xl font-bold text-charcoal mb-2 group-hover:text-hunters-orange transition-colors">Brownells</h3>
-                    <p class="text-gray-600 text-sm mb-4">America's largest firearms parts &amp; accessories retailer</p>
-                    <span class="text-hunters-orange font-semibold text-sm">Shop Now &rarr;</span>
-                </a>
-                <a href="https://www.midwayusa.com" target="_blank" rel="noopener noreferrer" class="bg-white rounded-xl p-8 card-depth border-t-4 border-hunters-orange hover:shadow-lg transition-shadow group">
-                    <h3 class="text-xl font-bold text-charcoal mb-2 group-hover:text-hunters-orange transition-colors">Midway USA</h3>
-                    <p class="text-gray-600 text-sm mb-4">Premier source for shooting, hunting &amp; outdoor products</p>
-                    <span class="text-hunters-orange font-semibold text-sm">Shop Now &rarr;</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- OEM CTA Section -->
-    <section class="py-16 steel-dark border-y-4 border-hunters-orange">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Looking for OEM Solutions?</h2>
-            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">We work directly with firearms manufacturers to develop custom sight solutions. Contact our OEM team to discuss your requirements.</p>
-            <a href="contact.html" class="inline-block bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-4 px-8 rounded-lg text-lg transition-all">
-                Contact OEM Sales
-            </a>
-        </div>
     </section>
 
     <!-- Footer -->
@@ -280,10 +174,9 @@
                 <div>
                     <h4 class="font-bold text-lg mb-4">Products</h4>
                     <ul class="space-y-2">
-                        <li><a href="products.html#pistol-ironsights" class="text-gray-400 hover:text-hunters-orange transition-colors">Pistol Ironsights</a></li>
-                        <li><a href="products.html#rifle-ironsights" class="text-gray-400 hover:text-hunters-orange transition-colors">Rifle Ironsights</a></li>
-                        <li><a href="products.html#legacy-products" class="text-gray-400 hover:text-hunters-orange transition-colors">Legacy Products</a></li>
-                        <li><a href="products.html#accessories" class="text-gray-400 hover:text-hunters-orange transition-colors">Accessories</a></li>
+                        <li><a href="products-consumer.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Consumer Products</a></li>
+                        <li><a href="products-oem.html" class="text-gray-400 hover:text-hunters-orange transition-colors">OEM Portfolio</a></li>
+                        <li><a href="products-consumer.html#where-to-buy" class="text-gray-400 hover:text-hunters-orange transition-colors">Find a Distributor</a></li>
                     </ul>
                 </div>
 
@@ -303,7 +196,7 @@
                     <ul class="space-y-2">
                         <li><a href="contact.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Contact Us</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-hunters-orange transition-colors">FAQ</a></li>
-                        <li><a href="products.html#where-to-buy" class="text-gray-400 hover:text-hunters-orange transition-colors">Find a Distributor</a></li>
+                        <li><a href="contact-oem.html" class="text-gray-400 hover:text-hunters-orange transition-colors">OEM Sales</a></li>
                     </ul>
                 </div>
 
@@ -358,33 +251,6 @@
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
                 menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-            });
-        });
-
-        // Product filter
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const categoryCards = document.querySelectorAll('.category-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filter = btn.dataset.filter;
-
-                // Update button styles
-                filterBtns.forEach(b => {
-                    b.classList.remove('bg-hunters-orange', 'text-white');
-                    b.classList.add('bg-white', 'text-charcoal');
-                });
-                btn.classList.remove('bg-white', 'text-charcoal');
-                btn.classList.add('bg-hunters-orange', 'text-white');
-
-                // Show/hide cards
-                categoryCards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = '';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
             });
         });
     </script>
