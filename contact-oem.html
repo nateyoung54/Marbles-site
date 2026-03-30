@@ -78,7 +78,7 @@
                 </a>
                 <div class="hidden md:flex items-center gap-8">
                     <a href="manufacturing.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">OEM & Manufacturing</a>
-                    <a href="history.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">History & Culture</a>
+                    <a href="history.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">Culture & History</a>
                     <a href="products.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">Products</a>
                     <a href="contact.html" class="text-hunters-orange font-medium text-lg">Contact Us</a>
                 </div>
@@ -91,7 +91,7 @@
             <div id="mobile-menu" class="hidden md:hidden pb-4">
                 <a href="products.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">Products</a>
                 <a href="manufacturing.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">OEM & Manufacturing</a>
-                <a href="history.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">History & Culture</a>
+                <a href="history.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">Culture & History</a>
                 <a href="contact.html" class="block py-2 text-hunters-orange font-medium text-lg">Contact Us</a>
             </div>
         </div>
@@ -115,148 +115,51 @@
 
     <!-- OEM Inquiry Form -->
     <section class="py-16 grey-texture">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12">
-                <!-- Form -->
-                <div class="bg-white rounded-xl p-5 md:p-10 card-depth">
-                    <h2 class="text-2xl font-bold text-charcoal mb-6">Submit an OEM Inquiry</h2>
-                    <form>
-                        <!-- Inquiry Type -->
-                        <div class="mb-6">
-                            <label for="inquiry-type" class="block text-sm font-medium text-gray-700 mb-2">Inquiry Type <span class="text-red-500">*</span></label>
-                            <select id="inquiry-type" name="inquiry-type" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange">
-                                <option value="">Select inquiry type</option>
-                                <option value="new-program">New OEM Program</option>
-                                <option value="existing-customer">Existing Customer</option>
-                                <option value="engineering">Engineering Consultation</option>
-                                <option value="ppap">PPAP &amp; Quality</option>
-                                <option value="other">Other</option>
-                            </select>
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-xl p-8 md:p-12 card-depth">
+                <h2 class="text-2xl font-bold text-charcoal mb-8">Submit an OEM Inquiry</h2>
+                <form>
+                    <!-- Name & Email -->
+                    <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="Your name">
                         </div>
-
-                        <!-- Company Name -->
-                        <div class="mb-6">
-                            <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company Name <span class="text-red-500">*</span></label>
-                            <input type="text" id="company" name="company" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="Your company name">
-                        </div>
-
-                        <!-- Name & Email -->
-                        <div class="grid md:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name <span class="text-red-500">*</span></label>
-                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="Your name">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email <span class="text-red-500">*</span></label>
-                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="you@company.com">
-                            </div>
-                        </div>
-
-                        <!-- Phone -->
-                        <div class="mb-6">
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone <span class="text-gray-400">(optional)</span></label>
-                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="(555) 000-0000">
-                        </div>
-
-                        <!-- Firearm Application -->
-                        <div class="mb-6">
-                            <label for="firearm-application" class="block text-sm font-medium text-gray-700 mb-2">Firearm Application <span class="text-gray-400">(optional)</span></label>
-                            <select id="firearm-application" name="firearm-application" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange">
-                                <option value="">Select application</option>
-                                <option value="rifle">Rifle</option>
-                                <option value="pistol">Pistol</option>
-                                <option value="shotgun">Shotgun</option>
-                                <option value="multi">Multi-platform</option>
-                                <option value="tbd">Not yet determined</option>
-                            </select>
-                        </div>
-
-                        <!-- Est. Annual Volume -->
-                        <div class="mb-6">
-                            <label for="annual-volume" class="block text-sm font-medium text-gray-700 mb-2">Est. Annual Volume <span class="text-gray-400">(optional)</span></label>
-                            <select id="annual-volume" name="annual-volume" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange">
-                                <option value="">Select volume range</option>
-                                <option value="under-10k">Under 10,000</option>
-                                <option value="10k-100k">10,000-100,000</option>
-                                <option value="over-100k">100,000+</option>
-                                <option value="unknown">Unknown</option>
-                            </select>
-                        </div>
-
-                        <!-- Drawings Available? -->
-                        <div class="mb-6">
-                            <label for="drawings" class="block text-sm font-medium text-gray-700 mb-2">Drawings Available? <span class="text-gray-400">(optional)</span></label>
-                            <select id="drawings" name="drawings" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange">
-                                <option value="">Select drawing status</option>
-                                <option value="ready">Yes, ready to submit</option>
-                                <option value="in-development">In development</option>
-                                <option value="need-support">No, need engineering support</option>
-                            </select>
-                        </div>
-
-                        <!-- Message -->
-                        <div class="mb-6">
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message <span class="text-gray-400">(optional)</span></label>
-                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="Describe your requirements, timeline, or questions"></textarea>
-                        </div>
-
-                        <button type="submit" class="w-full bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-4 px-8 rounded-lg text-lg transition-all border-b-4 border-hunters-orange-dark">
-                            Submit OEM Inquiry
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Right Column: Company Info + What to Expect -->
-                <div class="flex flex-col gap-6">
-                    <!-- Company Info -->
-                    <div class="bg-charcoal rounded-xl p-5 md:p-8 text-white">
-                        <h2 class="text-2xl font-bold mb-6">Our Location</h2>
-                        <div class="space-y-4">
-                            <div class="flex items-start">
-                                <svg class="w-6 h-6 text-hunters-orange mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                </svg>
-                                <div>
-                                    <p class="font-semibold">Marble Arms</p>
-                                    <p class="text-gray-300">420 Industrial Park Drive</p>
-                                    <p class="text-gray-300">Gladstone, MI 49837</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <svg class="w-6 h-6 text-hunters-orange mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                </svg>
-                                <div>
-                                    <p class="text-gray-300">(906) 428-3710</p>
-                                </div>
-                            </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email <span class="text-red-500">*</span></label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="you@company.com">
                         </div>
                     </div>
 
-                    <!-- What to Expect -->
-                    <div class="bg-white rounded-xl p-5 md:p-8 card-depth border-l-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-4">What to Expect</h3>
-                        <ul class="space-y-3 text-gray-600">
-                            <li class="flex items-start">
-                                <span class="text-hunters-orange font-bold mr-3 mt-0.5">&#8226;</span>
-                                We'll reach out to discuss your program
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-hunters-orange font-bold mr-3 mt-0.5">&#8226;</span>
-                                NDA available prior to drawing submission
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-hunters-orange font-bold mr-3 mt-0.5">&#8226;</span>
-                                PPAP Levels 1-5 supported
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-hunters-orange font-bold mr-3 mt-0.5">&#8226;</span>
-                                No minimum order quantities for qualification runs
-                            </li>
-                        </ul>
+                    <!-- Company -->
+                    <div class="mb-5">
+                        <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company <span class="text-red-500">*</span></label>
+                        <input type="text" id="company" name="company" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="Your company name">
                     </div>
-                </div>
+
+                    <!-- Inquiry Type -->
+                    <div class="mb-5">
+                        <label for="inquiry-type" class="block text-sm font-medium text-gray-700 mb-2">Inquiry Type <span class="text-red-500">*</span></label>
+                        <select id="inquiry-type" name="inquiry-type" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange">
+                            <option value="">Select inquiry type</option>
+                            <option value="new-program">New OEM Program</option>
+                            <option value="existing-customer">Existing Customer</option>
+                            <option value="engineering">Engineering Consultation</option>
+                            <option value="ppap">PPAP &amp; Quality</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="mb-8">
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message <span class="text-red-500">*</span></label>
+                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="Describe your requirements, timeline, or questions"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-4 px-8 rounded-lg text-lg transition-all border-b-4 border-hunters-orange-dark">
+                        Submit Inquiry
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -269,10 +172,9 @@
                 <div>
                     <h4 class="font-bold text-lg mb-4">Products</h4>
                     <ul class="space-y-2">
-                        <li><a href="products.html#front-sights" class="text-gray-400 hover:text-hunters-orange transition-colors">Front Sights</a></li>
-                        <li><a href="products.html#rear-sights" class="text-gray-400 hover:text-hunters-orange transition-colors">Rear Sights</a></li>
-                        <li><a href="products.html#shotgun-beads" class="text-gray-400 hover:text-hunters-orange transition-colors">Shotgun Beads</a></li>
-                        <li><a href="products.html#peep-tang" class="text-gray-400 hover:text-hunters-orange transition-colors">Peep Tang Sights</a></li>
+                        <li><a href="products.html#pistol-ironsights" class="text-gray-400 hover:text-hunters-orange transition-colors">Pistol Ironsights</a></li>
+                        <li><a href="products.html#rifle-ironsights" class="text-gray-400 hover:text-hunters-orange transition-colors">Rifle Ironsights</a></li>
+                        <li><a href="products.html#legacy-products" class="text-gray-400 hover:text-hunters-orange transition-colors">Legacy Products</a></li>
                         <li><a href="products.html#accessories" class="text-gray-400 hover:text-hunters-orange transition-colors">Accessories</a></li>
                     </ul>
                 </div>
@@ -281,7 +183,7 @@
                 <div>
                     <h4 class="font-bold text-lg mb-4">Company</h4>
                     <ul class="space-y-2">
-                        <li><a href="history.html" class="text-gray-400 hover:text-hunters-orange transition-colors">History &amp; Culture</a></li>
+                        <li><a href="history.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Culture &amp; History</a></li>
                         <li><a href="history.html#history" class="text-gray-400 hover:text-hunters-orange transition-colors">Our History</a></li>
                         <li><a href="history.html#careers" class="text-gray-400 hover:text-hunters-orange transition-colors">Careers</a></li>
                     </ul>

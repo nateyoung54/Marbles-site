@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marble Arms | History & Culture</title>
+    <title>Marble Arms | Culture & History</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,6 +55,10 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
         }
         .section-accent { border-left: 4px solid #FF6600; padding-left: 1rem; }
+        .photo-placeholder {
+            background: linear-gradient(135deg, #E7E5E4 0%, #D6D3D1 100%);
+            border: 2px dashed #A8A29E;
+        }
         .img-container { position: relative; overflow: hidden; }
         .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .img-container:hover img { transform: scale(1.05); }
@@ -85,7 +89,7 @@
                 </a>
                 <div class="hidden md:flex items-center gap-8">
                     <a href="manufacturing.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">OEM & Manufacturing</a>
-                    <a href="history.html" class="text-hunters-orange font-medium text-lg">History & Culture</a>
+                    <a href="history.html" class="text-hunters-orange font-medium text-lg">Culture & History</a>
                     <a href="products.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">Products</a>
                     <a href="contact.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
                 </div>
@@ -98,7 +102,7 @@
             <div id="mobile-menu" class="hidden md:hidden pb-4">
                 <a href="products.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">Products</a>
                 <a href="manufacturing.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">OEM & Manufacturing</a>
-                <a href="history.html" class="block py-2 text-hunters-orange font-medium text-lg">History & Culture</a>
+                <a href="history.html" class="block py-2 text-hunters-orange font-medium text-lg">Culture & History</a>
                 <a href="contact.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
             </div>
         </div>
@@ -110,10 +114,10 @@
             <nav class="text-sm mb-4">
                 <a href="index.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Home</a>
                 <span class="text-gray-600 mx-2">/</span>
-                <span class="text-hunters-orange">History & Culture</span>
+                <span class="text-hunters-orange">Culture & History</span>
             </nav>
             <div class="section-accent">
-                <h1 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">History & Culture</h1>
+                <h1 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">Culture & History</h1>
             </div>
             <p class="text-xl md:text-2xl text-gray-300 max-w-2xl">Over 130 years of American craftsmanship. All steel. All American. Still made in Gladstone, Michigan.</p>
         </div>
@@ -214,112 +218,178 @@
 
     <!-- Timeline -->
     <section id="history" class="py-16 md:py-24 grey-medium scroll-mt-24">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Section Title Card -->
+            <div class="mb-14 bg-charcoal rounded-2xl p-8 md:p-10 border-l-4 border-hunters-orange shadow-xl">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-snug mb-3">The culture didn't come from a strategy session.<br><span class="text-hunters-orange">It came from 130 years of doing the work.</span></h2>
+                <p class="text-gray-300 text-lg leading-relaxed">From a one-man operation in 1892 to a full-scale CNC facility supplying America's top firearms manufacturers — every chapter of this history was built by people who cared more about the craft than the accolades.</p>
+            </div>
 
             <div class="relative">
-                <!-- Vertical line -->
-                <div class="absolute left-9 top-0 bottom-0 w-0.5 bg-gradient-to-b from-hunters-orange via-hunters-orange to-hunters-orange/20"></div>
+                <!-- Mobile line (left side) -->
+                <div class="md:hidden absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-hunters-orange via-hunters-orange to-hunters-orange/20"></div>
+                <!-- Desktop line (center) -->
+                <div class="hidden md:block absolute left-1/2 -translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-hunters-orange via-hunters-orange to-hunters-orange/20"></div>
 
                 <div class="space-y-12">
 
-                    <!-- 1892 -->
-                    <div class="relative flex gap-8">
-                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
-                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10"></div>
-                        </div>
-                        <div class="pb-2">
+                    <!-- 1892 — text left, image right -->
+                    <div class="relative pl-10 md:pl-0 md:grid md:grid-cols-[1fr_2.5rem_1fr] md:items-start">
+                        <div class="md:hidden absolute left-1.5 top-1 w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        <div class="md:pr-8 md:text-right">
                             <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">1892</span>
-                            <h3 class="text-xl font-bold text-charcoal mb-1">Founded in Gladstone, Michigan</h3>
+                            <h3 class="text-xl font-bold text-charcoal mb-2">Founded in Gladstone, Michigan</h3>
                             <p class="text-gray-600">Webster L. Marble establishes Marble Arms with one goal: build tools that outdoorsmen can depend on for a lifetime. His Universal Rifle Sight immediately sets a new benchmark for iron sight precision.</p>
                         </div>
+                        <div class="hidden md:flex justify-center pt-1">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:pl-8">
+                            <div class="photo-placeholder h-44 w-44 rounded-xl overflow-hidden">
+                                <img src="" alt="Marble Arms founding, 1892" class="w-full h-full object-cover hidden">
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- 1898 -->
-                    <div class="relative flex gap-8">
-                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
-                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10"></div>
-                        </div>
-                        <div class="pb-2">
+                    <!-- 1898 — image left, text right -->
+                    <div class="relative pl-10 md:pl-0 md:grid md:grid-cols-[1fr_2.5rem_1fr] md:items-start">
+                        <div class="md:hidden absolute left-1.5 top-1 w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        <div class="md:order-3 md:pl-8">
                             <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">1898</span>
-                            <h3 class="text-xl font-bold text-charcoal mb-1">National Recognition</h3>
+                            <h3 class="text-xl font-bold text-charcoal mb-2">National Recognition</h3>
                             <p class="text-gray-600">The Marble Game Getter and patented safety axe bring national acclaim, with Webster holding over 50 patents across firearms, camping, and outdoor tools. Marble Arms becomes synonymous with American craftsmanship.</p>
                         </div>
+                        <div class="hidden md:flex justify-center pt-1 md:order-2">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:pr-8 md:flex md:justify-end md:order-1">
+                            <div class="photo-placeholder h-44 w-44 rounded-xl overflow-hidden">
+                                <img src="" alt="Marble Arms national recognition, 1898" class="w-full h-full object-cover hidden">
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- 1917 -->
-                    <div class="relative flex gap-8">
-                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
-                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10"></div>
-                        </div>
-                        <div class="pb-2">
+                    <!-- 1917 — text left, image right -->
+                    <div class="relative pl-10 md:pl-0 md:grid md:grid-cols-[1fr_2.5rem_1fr] md:items-start">
+                        <div class="md:hidden absolute left-1.5 top-1 w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        <div class="md:pr-8 md:text-right">
                             <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">1917</span>
-                            <h3 class="text-xl font-bold text-charcoal mb-1">Supporting the War Effort</h3>
+                            <h3 class="text-xl font-bold text-charcoal mb-2">Supporting the War Effort</h3>
                             <p class="text-gray-600">Marble Arms supplies sight components to the U.S. military during World War I. Performing under combat conditions cements our reputation for reliability where it counts most.</p>
                         </div>
+                        <div class="hidden md:flex justify-center pt-1">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:pl-8">
+                            <div class="photo-placeholder h-44 w-44 rounded-xl overflow-hidden">
+                                <img src="" alt="Marble Arms WWI production, 1917" class="w-full h-full object-cover hidden">
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- 1942 -->
-                    <div class="relative flex gap-8">
-                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
-                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10"></div>
-                        </div>
-                        <div class="pb-2">
+                    <!-- 1942 — image left, text right -->
+                    <div class="relative pl-10 md:pl-0 md:grid md:grid-cols-[1fr_2.5rem_1fr] md:items-start">
+                        <div class="md:hidden absolute left-1.5 top-1 w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        <div class="md:order-3 md:pl-8">
                             <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">1942</span>
-                            <h3 class="text-xl font-bold text-charcoal mb-1">World War II Production</h3>
+                            <h3 class="text-xl font-bold text-charcoal mb-2">World War II Production</h3>
                             <p class="text-gray-600">Production again pivots to support American forces. Precision machining at scale becomes embedded in our culture — a legacy our machinists still carry today.</p>
                         </div>
+                        <div class="hidden md:flex justify-center pt-1 md:order-2">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:pr-8 md:flex md:justify-end md:order-1">
+                            <div class="photo-placeholder h-44 w-44 rounded-xl overflow-hidden">
+                                <img src="" alt="Marble Arms WWII production, 1942" class="w-full h-full object-cover hidden">
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- 1968 -->
-                    <div class="relative flex gap-8">
-                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
-                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10"></div>
-                        </div>
-                        <div class="pb-2">
+                    <!-- 1968 — text left, image right -->
+                    <div class="relative pl-10 md:pl-0 md:grid md:grid-cols-[1fr_2.5rem_1fr] md:items-start">
+                        <div class="md:hidden absolute left-1.5 top-1 w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        <div class="md:pr-8 md:text-right">
                             <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">1968</span>
-                            <h3 class="text-xl font-bold text-charcoal mb-1">Focus Sharpens</h3>
+                            <h3 class="text-xl font-bold text-charcoal mb-2">Focus Sharpens</h3>
                             <p class="text-gray-600">Marble Arms narrows its focus exclusively to iron sights and precision firearm components. The Uni-Ramp front sight becomes a fixture on American-made rifles across the country.</p>
                         </div>
+                        <div class="hidden md:flex justify-center pt-1">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:pl-8">
+                            <div class="photo-placeholder h-44 w-44 rounded-xl overflow-hidden">
+                                <img src="" alt="Marble Arms Uni-Ramp front sight, 1968" class="w-full h-full object-cover hidden">
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- 1995 -->
-                    <div class="relative flex gap-8">
-                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
-                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10"></div>
-                        </div>
-                        <div class="pb-2">
+                    <!-- 1995 — image left, text right -->
+                    <div class="relative pl-10 md:pl-0 md:grid md:grid-cols-[1fr_2.5rem_1fr] md:items-start">
+                        <div class="md:hidden absolute left-1.5 top-1 w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        <div class="md:order-3 md:pl-8">
                             <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">1995</span>
-                            <h3 class="text-xl font-bold text-charcoal mb-1">CNC Comes to Gladstone</h3>
+                            <h3 class="text-xl font-bold text-charcoal mb-2">CNC Comes to Gladstone</h3>
                             <p class="text-gray-600">Multi-axis CNC machining arrives at the facility. Tolerances tighten, consistency improves, and throughput scales — the old commitment meets new technology without compromise.</p>
                         </div>
+                        <div class="hidden md:flex justify-center pt-1 md:order-2">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:pr-8 md:flex md:justify-end md:order-1">
+                            <div class="photo-placeholder h-44 w-44 rounded-xl overflow-hidden">
+                                <img src="" alt="CNC machining at Marble Arms, 1995" class="w-full h-full object-cover hidden">
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- 2008 -->
-                    <div class="relative flex gap-8">
-                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
-                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10"></div>
-                        </div>
-                        <div class="pb-2">
+                    <!-- 2008 — text left, image right -->
+                    <div class="relative pl-10 md:pl-0 md:grid md:grid-cols-[1fr_2.5rem_1fr] md:items-start">
+                        <div class="md:hidden absolute left-1.5 top-1 w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        <div class="md:pr-8 md:text-right">
                             <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">2008</span>
-                            <h3 class="text-xl font-bold text-charcoal mb-1">OEM Program Launches</h3>
+                            <h3 class="text-xl font-bold text-charcoal mb-2">OEM Program Launches</h3>
                             <p class="text-gray-600">Marble Arms formalizes its OEM program, supplying precision-machined components directly to America's leading firearms manufacturers. The business grows without leaving Gladstone.</p>
                         </div>
+                        <div class="hidden md:flex justify-center pt-1">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:pl-8">
+                            <div class="photo-placeholder h-44 w-44 rounded-xl overflow-hidden">
+                                <img src="" alt="Marble Arms OEM program launch, 2008" class="w-full h-full object-cover hidden">
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Today -->
-                    <div class="relative flex gap-8">
-                        <div class="flex-shrink-0 w-18 flex flex-col items-center">
-                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md mt-1 z-10 ring-4 ring-hunters-orange/30"></div>
-                        </div>
-                        <div class="pb-2">
+                    <!-- Today — image left, text right -->
+                    <div class="relative pl-10 md:pl-0 md:grid md:grid-cols-[1fr_2.5rem_1fr] md:items-start">
+                        <div class="md:hidden absolute left-1.5 top-1 w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10"></div>
+                        <div class="md:order-3 md:pl-8">
                             <span class="text-3xl font-extrabold text-hunters-orange font-heading block leading-none mb-2">Today</span>
-                            <h3 class="text-xl font-bold text-charcoal mb-1">Still Here. Still Building.</h3>
+                            <h3 class="text-xl font-bold text-charcoal mb-2">Still Here. Still Building.</h3>
                             <p class="text-gray-600">Marble Arms remains in Gladstone, Michigan — still all-steel, still American made, still family-run. Over 130 years of unbroken production and counting.</p>
+                        </div>
+                        <div class="hidden md:flex justify-center pt-1 md:order-2">
+                            <div class="w-5 h-5 rounded-full bg-hunters-orange border-4 border-white shadow-md z-10 ring-4 ring-hunters-orange/30"></div>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:pr-8 md:flex md:justify-end md:order-1">
+                            <div class="photo-placeholder h-44 w-44 rounded-xl overflow-hidden">
+                                <img src="" alt="Marble Arms today" class="w-full h-full object-cover hidden">
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Museum Callout -->
+    <section class="py-14 steel-dark border-t-4 border-hunters-orange">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-xs text-hunters-orange tracking-[0.3em] uppercase font-semibold mb-3">Visit Us</p>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">Marble Arms Museum</h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-5">See the full story up close. The Marble Arms Museum in Escanaba, Michigan houses original products, patents, tools, and artifacts spanning our 130+ year history — all free to visit.</p>
+            <p class="text-hunters-orange font-bold tracking-wide">Escanaba, Michigan</p>
         </div>
     </section>
 
@@ -338,7 +408,7 @@
                 <div>
                     <h4 class="font-bold text-lg mb-4">Company</h4>
                     <ul class="space-y-2">
-                        <li><a href="history.html" class="text-gray-400 hover:text-hunters-orange transition-colors">History & Culture</a></li>
+                        <li><a href="history.html" class="text-gray-400 hover:text-hunters-orange transition-colors">Culture & History</a></li>
                         <li><a href="history.html#history" class="text-gray-400 hover:text-hunters-orange transition-colors">Our History</a></li>
                         <li><a href="history.html#careers" class="text-gray-400 hover:text-hunters-orange transition-colors">Careers</a></li>
                     </ul>
