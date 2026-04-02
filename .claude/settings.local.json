@@ -7,7 +7,22 @@
       "WebSearch",
       "WebFetch(domain:unsplash.com)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: Marble Arms website prototype\n\n- Homepage with hero, products, and company info\n- Products page with front sights, rear sights, shotgun beads, peep tang sights, and accessories\n- About page with company history, values, and careers section\n- Contact page with OEM, distributor, and general inquiry options\n- Industrial textured design with hunter''s orange accents\n- Responsive navigation with centered logo\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(gh repo create:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(vercel --version:*)",
+      "Bash(npm install:*)",
+      "Bash(vercel:*)",
+      "Bash(ls:*)",
+      "Bash(cd:*)",
+      "Bash(cd C:\\\\Claude\\\\projects\\\\Marbles-site:*)",
+      "Bash(git commit:*)",
+      "Bash(gh auth:*)",
+      "Bash(grep -rn \"src=\"\"images/[^L][^o][^g]\" *.html)",
+      "Bash(powershell -Command ':*)"
     ]
   }
 }
