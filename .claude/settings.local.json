@@ -22,7 +22,10 @@
       "Bash(git commit:*)",
       "Bash(gh auth:*)",
       "Bash(grep -rn \"src=\"\"images/[^L][^o][^g]\" *.html)",
-      "Bash(powershell -Command ':*)"
+      "Bash(powershell -Command ':*)",
+      "Bash(grep -hno 'src=\"images/[^\"]*\"' *.html)",
+      "Bash(grep -l 'images/Craig.jpg' *.html)",
+      "Bash(sed:*)"
     ]
   }
 }
