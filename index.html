@@ -239,7 +239,7 @@
           </a>
 
           <!-- Panel 3: Products -->
-          <a href="products.html" class="group relative overflow-hidden flex-1 block">
+          <div class="group relative overflow-hidden flex-1 block cursor-pointer" onclick="window.location.href='products.html'">
             <div class="absolute inset-0 bg-cover bg-center brightness-90 group-hover:brightness-110 transition-all duration-500"
                  style="background-image: url('images/Products/New Rear Sight Photo.png')"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
@@ -250,8 +250,11 @@
               <span class="inline-flex items-center gap-2 text-hunters-orange text-sm font-bold tracking-widest uppercase">
                 Explore <span class="transition-transform duration-200 group-hover:translate-x-2 inline-block">&rarr;</span>
               </span>
+              <a href="products-consumer.html#where-to-buy" class="hidden md:inline-block bg-hunters-orange hover:bg-hunters-orange-dark text-white font-semibold py-1 px-3 rounded text-xs tracking-wide uppercase transition-all z-10 ml-4" onclick="event.stopPropagation();">
+                Where to Buy &rarr;
+              </a>
             </div>
-          </a>
+          </div>
 
         </div>
     </section>
