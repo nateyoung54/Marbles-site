@@ -99,7 +99,7 @@
 
     <!-- Page Hero -->
     <section class="steel-dark pt-24 border-b-4 border-hunters-orange">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-14">
             <!-- Breadcrumb -->
             <nav class="text-sm mb-4">
                 <a href="index.html" class="text-white/80 hover:text-hunters-orange transition-colors">Home</a>
@@ -109,46 +109,45 @@
             <div class="section-accent">
                 <h1 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">Contact Us</h1>
             </div>
-            <p class="text-xl md:text-2xl text-gray-300 max-w-2xl">Get in touch with our team. We're here to help.</p>
+            <p class="text-lg md:text-2xl text-gray-300 max-w-2xl mb-6">Get in touch with our team. We're here to help.</p>
+            <a href="contact-oem.html" class="inline-block bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg transition-all">
+                Contact OEM Sales &rarr;
+            </a>
         </div>
     </section>
 
     <!-- Contact Form & Info -->
-    <section class="py-16 grey-texture">
+    <section class="py-8 md:py-10 grey-texture">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12">
+            <div class="grid lg:grid-cols-3 gap-6 lg:gap-8">
                 <!-- Contact Form -->
-                <div class="bg-white rounded-xl p-5 md:p-10 card-depth">
-                    <h2 class="text-2xl font-bold text-charcoal mb-6">Send Us a Message</h2>
+                <div class="lg:col-span-2 bg-white rounded-xl p-5 md:p-8 card-depth">
+                    <h2 class="text-2xl font-bold text-charcoal mb-4">Send Us a Message</h2>
                     <form>
-                        <div class="mb-6">
-                            <label for="inquiry-type" class="block text-sm font-medium text-gray-700 mb-2">Inquiry Type</label>
-                            <select id="inquiry-type" name="inquiry-type" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange">
+                        <div class="mb-4">
+                            <label for="inquiry-type" class="block text-sm font-medium text-gray-700 mb-1.5">Inquiry Type</label>
+                            <select id="inquiry-type" name="inquiry-type" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange">
                                 <option value="general">General Question</option>
                                 <option value="distributor">Distributor Inquiry</option>
                                 <option value="support">Product Support</option>
                                 <option value="careers">Career Inquiry</option>
                             </select>
                         </div>
-                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="grid md:grid-cols-2 gap-4 mb-4">
                             <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                                <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="Your name">
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1.5">Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="Your name">
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="you@example.com">
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="you@example.com">
                             </div>
                         </div>
-                        <div class="mb-6">
-                            <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company <span class="text-gray-400">(optional)</span></label>
-                            <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="Your company">
+                        <div class="mb-4">
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1.5">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="How can we help?"></textarea>
                         </div>
-                        <div class="mb-6">
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="How can we help?"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-4 px-8 rounded-lg text-lg transition-all border-b-4 border-hunters-orange-dark">
+                        <button type="submit" class="w-full bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-3 px-8 rounded-lg text-lg transition-all border-b-4 border-hunters-orange-dark">
                             Send Message
                         </button>
                     </form>
@@ -156,20 +155,10 @@
 
                 <!-- Side Info -->
                 <div class="flex flex-col gap-6">
-                    <!-- OEM Routing Callout -->
-                    <div class="bg-charcoal rounded-xl p-5 md:p-8 text-white">
-                        <p class="text-xs text-gray-500 tracking-[0.2em] uppercase mb-3">Firearms Manufacturers</p>
-                        <h3 class="text-xl font-bold mb-3">Looking for OEM or custom sight solutions?</h3>
-                        <p class="text-gray-300 text-base leading-relaxed mb-6">We have a dedicated page for OEM programs, engineering consultations, volume pricing, and PPAP inquiries. Our team is here to help.</p>
-                        <a href="contact-oem.html" class="inline-block bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-3 px-6 rounded-lg transition-all border-b-4 border-hunters-orange-dark text-sm">
-                            Go to OEM Sales Inquiry &rarr;
-                        </a>
-                    </div>
-
                     <!-- Business Hours -->
-                    <div class="bg-white rounded-xl p-5 md:p-8 card-depth border-l-4 border-hunters-orange">
-                        <h3 class="text-lg font-bold text-charcoal mb-4">Business Hours</h3>
-                        <div class="space-y-2 text-gray-600">
+                    <div class="bg-white rounded-xl p-5 md:p-6 card-depth border-l-4 border-hunters-orange">
+                        <h3 class="text-lg font-bold text-charcoal mb-3">Business Hours</h3>
+                        <div class="space-y-2 text-gray-600 text-sm">
                             <div class="flex justify-between">
                                 <span>Monday - Friday</span>
                                 <span class="font-medium">8:00 AM - 4:30 PM EST</span>

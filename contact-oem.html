@@ -133,7 +133,25 @@
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white rounded-xl p-8 md:p-12 card-depth">
                 <h2 class="text-2xl font-bold text-charcoal mb-8">Submit an OEM Inquiry</h2>
-                <form>
+
+                <!-- Success message (shown after successful submission) -->
+                <div id="oem-form-success" class="hidden bg-green-50 border border-green-200 rounded-lg p-6 text-center">
+                    <h3 class="text-xl font-bold text-green-800 mb-2">Inquiry sent</h3>
+                    <p class="text-green-700">Thanks — Craig will be in touch with you shortly.</p>
+                </div>
+
+                <!-- Error message (shown if submission fails) -->
+                <div id="oem-form-error" class="hidden bg-red-50 border border-red-200 rounded-lg p-6 text-center mb-6">
+                    <p class="text-red-700">Something went wrong sending your inquiry. Please try again or email <a href="mailto:clauerman@marblearms.com" class="underline font-semibold">clauerman@marblearms.com</a> directly.</p>
+                </div>
+
+                <form id="oem-inquiry-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="44368a2a-ed06-4ae7-816f-1421fe53139a">
+                    <input type="hidden" name="subject" value="New OEM Inquiry – Marble Arms">
+                    <input type="hidden" name="from_name" value="Marble Arms OEM Form">
+                    <!-- Honeypot for spam bots -->
+                    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
                     <!-- Name & Email -->
                     <div class="grid sm:grid-cols-2 gap-5 mb-5">
                         <div>
@@ -152,26 +170,13 @@
                         <input type="text" id="company" name="company" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="Your company name">
                     </div>
 
-                    <!-- Inquiry Type -->
-                    <div class="mb-5">
-                        <label for="inquiry-type" class="block text-sm font-medium text-gray-700 mb-2">Inquiry Type <span class="text-red-500">*</span></label>
-                        <select id="inquiry-type" name="inquiry-type" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange">
-                            <option value="">Select inquiry type</option>
-                            <option value="new-program">New OEM Program</option>
-                            <option value="existing-customer">Existing Customer</option>
-                            <option value="engineering">Engineering Consultation</option>
-                            <option value="ppap">PPAP &amp; Quality</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-
                     <!-- Message -->
                     <div class="mb-8">
                         <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message <span class="text-red-500">*</span></label>
                         <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="Describe your requirements, timeline, or questions"></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-4 px-8 rounded-lg text-lg transition-all border-b-4 border-hunters-orange-dark">
+                    <button id="oem-submit-btn" type="submit" class="w-full bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-4 px-8 rounded-lg text-lg transition-all border-b-4 border-hunters-orange-dark disabled:opacity-60 disabled:cursor-not-allowed">
                         Submit Inquiry
                     </button>
                     <p class="text-sm text-gray-500 mt-4 text-center">All inquiries are handled with discretion. We are happy to execute an NDA prior to discussing your program details.</p>
@@ -262,6 +267,43 @@
                 menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
             });
         });
+    </script>
+
+    <!-- OEM Inquiry Form Submission -->
+    <script>
+        (function () {
+            const form    = document.getElementById('oem-inquiry-form');
+            const submit  = document.getElementById('oem-submit-btn');
+            const success = document.getElementById('oem-form-success');
+            const error   = document.getElementById('oem-form-error');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                error.classList.add('hidden');
+                submit.disabled = true;
+                submit.textContent = 'Sending…';
+
+                try {
+                    const res = await fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    const data = await res.json();
+                    if (res.ok && data.success) {
+                        form.classList.add('hidden');
+                        success.classList.remove('hidden');
+                        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        throw new Error(data.message || 'Submission failed');
+                    }
+                } catch (err) {
+                    error.classList.remove('hidden');
+                    submit.disabled = false;
+                    submit.textContent = 'Submit Inquiry';
+                }
+            });
+        })();
     </script>
 </body>
 </html>
