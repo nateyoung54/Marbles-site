@@ -35,6 +35,22 @@
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Barlow', sans-serif;
         }
+        .product-pill {
+            font-family: 'Barlow', sans-serif;
+            font-weight: 700;
+            font-size: 0.8125rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            background-color: #292524;
+            color: #ffffff;
+            border: 2px solid #292524;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+            cursor: pointer;
+        }
+        .product-pill.active-pill {
+            background-color: #FF6600;
+            border-color: #FF6600;
+        }
         /* Industrial brushed metal texture */
         .metal-texture {
             background-color: #2a2a2a;
@@ -264,86 +280,81 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Header -->
             <div class="text-center mb-4">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-charcoal inline-block border-b-4 border-hunters-orange pb-2">What We Make</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-charcoal inline-block border-b-4 border-hunters-orange pb-2">Consumer Products</h2>
             </div>
 
-            <div class="grid grid-cols-2 lg:flex lg:flex-row items-center gap-4 lg:gap-6">
+            <!-- Mobile: horizontal pill selector (hidden on desktop) -->
+            <div id="product-pills" class="lg:hidden flex flex-wrap justify-center gap-1.5 mb-2">
+                <button type="button" class="product-pill active-pill" data-index="0">Front</button>
+                <button type="button" class="product-pill" data-index="1">Rear</button>
+                <button type="button" class="product-pill" data-index="2">Shotgun</button>
+                <button type="button" class="product-pill" data-index="3">Peep</button>
+                <button type="button" class="product-pill" data-index="4">Catch 22</button>
+            </div>
 
-                <!-- Col 1: Donut Chart -->
-                <div class="lg:w-1/4 flex flex-col items-center flex-shrink-0">
-                    <svg id="product-pie" viewBox="0 0 500 500" class="w-full lg:w-[380px] lg:h-[380px] cursor-pointer" style="overflow:visible;">
+            <div class="flex flex-col lg:flex-row items-center gap-1 lg:gap-6">
 
-                        <!-- Slice 0: Front Sights -->
-                        <path class="pie-slice" data-index="0" data-tx="5" data-ty="-11"
-                            d="M 250,50 A 200,200 0 0,1 406,125 L 320,194 A 90,90 0 0,0 250,160 Z"
-                            fill="#292524" stroke="white" stroke-width="3"/>
+                <!-- Col 1: Donut Chart (desktop only) -->
+                <div class="hidden lg:flex lg:w-1/4 flex-col items-center flex-shrink-0">
+                    <svg id="product-pie" viewBox="0 0 500 500" class="lg:w-[380px] lg:h-[380px] cursor-pointer" style="overflow:visible;">
 
-                        <!-- Slice 1: Rear Sights -->
-                        <path class="pie-slice" data-index="1" data-tx="12" data-ty="-3"
-                            d="M 406,125 A 200,200 0 0,1 445,295 L 338,270 A 90,90 0 0,0 320,194 Z"
-                            fill="#292524" stroke="white" stroke-width="3"/>
+                        <!-- 5 slices of 72° each, starting from top (0°) going clockwise.
+                             Each <g> wraps the slice path and its label so they translate together. -->
 
-                        <!-- Slice 2: Peep Sights -->
-                        <path class="pie-slice" data-index="2" data-tx="9" data-ty="7"
-                            d="M 445,295 A 200,200 0 0,1 337,430 L 289,331 A 90,90 0 0,0 338,270 Z"
-                            fill="#292524" stroke="white" stroke-width="3"/>
+                        <!-- Slice 0: Front Sights — 0° to 72° -->
+                        <g class="pie-slice-group" data-index="0" data-tx="7" data-ty="-10">
+                            <path class="pie-slice"
+                                d="M 250,50 A 200,200 0 0,1 440.21,188.20 L 335.60,222.19 A 90,90 0 0,0 250,160 Z"
+                                fill="#292524" stroke="white" stroke-width="3"/>
+                            <text text-anchor="middle" fill="white" font-size="15" font-weight="700" font-family="Barlow, sans-serif" pointer-events="none">
+                                <tspan x="335" y="124">Front</tspan>
+                                <tspan x="335" dy="17">Sights</tspan>
+                            </text>
+                        </g>
 
-                        <!-- Slice 3: Shotgun Sights -->
-                        <path class="pie-slice" data-index="3" data-tx="0" data-ty="12"
-                            d="M 337,430 A 200,200 0 0,1 163,430 L 211,331 A 90,90 0 0,0 289,331 Z"
-                            fill="#292524" stroke="white" stroke-width="3"/>
+                        <!-- Slice 1: Rear Sights — 72° to 144° -->
+                        <g class="pie-slice-group" data-index="1" data-tx="11" data-ty="4">
+                            <path class="pie-slice"
+                                d="M 440.21,188.20 A 200,200 0 0,1 367.56,411.80 L 302.90,322.81 A 90,90 0 0,0 335.60,222.19 Z"
+                                fill="#292524" stroke="white" stroke-width="3"/>
+                            <text text-anchor="middle" fill="white" font-size="15" font-weight="700" font-family="Barlow, sans-serif" pointer-events="none">
+                                <tspan x="388" y="286">Rear</tspan>
+                                <tspan x="388" dy="17">Sights</tspan>
+                            </text>
+                        </g>
 
-                        <!-- Slice 4: Muzzle Devices -->
-                        <path class="pie-slice" data-index="4" data-tx="-9" data-ty="7"
-                            d="M 163,430 A 200,200 0 0,1 55,295 L 162,270 A 90,90 0 0,0 211,331 Z"
-                            fill="#292524" stroke="white" stroke-width="3"/>
+                        <!-- Slice 2: Shotgun Sights — 144° to 216° -->
+                        <g class="pie-slice-group" data-index="2" data-tx="0" data-ty="12">
+                            <path class="pie-slice"
+                                d="M 367.56,411.80 A 200,200 0 0,1 132.44,411.80 L 197.10,322.81 A 90,90 0 0,0 302.90,322.81 Z"
+                                fill="#292524" stroke="white" stroke-width="3"/>
+                            <text text-anchor="middle" fill="white" font-size="15" font-weight="700" font-family="Barlow, sans-serif" pointer-events="none">
+                                <tspan x="250" y="386">Shotgun</tspan>
+                                <tspan x="250" dy="17">Sights</tspan>
+                            </text>
+                        </g>
 
-                        <!-- Slice 5: Optic Mounting -->
-                        <path class="pie-slice" data-index="5" data-tx="-12" data-ty="-3"
-                            d="M 55,295 A 200,200 0 0,1 94,125 L 180,194 A 90,90 0 0,0 162,270 Z"
-                            fill="#292524" stroke="white" stroke-width="3"/>
+                        <!-- Slice 3: Peep Sights — 216° to 288° -->
+                        <g class="pie-slice-group" data-index="3" data-tx="-11" data-ty="4">
+                            <path class="pie-slice"
+                                d="M 132.44,411.80 A 200,200 0 0,1 59.79,188.20 L 164.40,222.19 A 90,90 0 0,0 197.10,322.81 Z"
+                                fill="#292524" stroke="white" stroke-width="3"/>
+                            <text text-anchor="middle" fill="white" font-size="15" font-weight="700" font-family="Barlow, sans-serif" pointer-events="none">
+                                <tspan x="112" y="286">Peep</tspan>
+                                <tspan x="112" dy="17">Sights</tspan>
+                            </text>
+                        </g>
 
-                        <!-- Slice 6: Precision Components -->
-                        <path class="pie-slice" data-index="6" data-tx="-5" data-ty="-11"
-                            d="M 94,125 A 200,200 0 0,1 250,50 L 250,160 A 90,90 0 0,0 180,194 Z"
-                            fill="#292524" stroke="white" stroke-width="3"/>
-
-                        <!-- Slice labels (midpoint radius ~145 from center 250,250) -->
-                        <!-- Slice 0: Front Sights — angle -64.3° -->
-                        <text text-anchor="middle" fill="white" font-size="15" font-weight="700" font-family="Barlow, sans-serif" pointer-events="none">
-                            <tspan x="313" y="112">Front</tspan>
-                            <tspan x="313" dy="17">Sights</tspan>
-                        </text>
-                        <!-- Slice 1: Rear Sights — angle -12.9° -->
-                        <text text-anchor="middle" fill="white" font-size="15" font-weight="700" font-family="Barlow, sans-serif" pointer-events="none">
-                            <tspan x="391" y="211">Rear</tspan>
-                            <tspan x="391" dy="17">Sights</tspan>
-                        </text>
-                        <!-- Slice 2: Peep Sights — angle 38.6° -->
-                        <text text-anchor="middle" fill="white" font-size="15" font-weight="700" font-family="Barlow, sans-serif" pointer-events="none">
-                            <tspan x="363" y="333">Peep</tspan>
-                            <tspan x="363" dy="17">Sights</tspan>
-                        </text>
-                        <!-- Slice 3: Shotgun Sights — angle 90° -->
-                        <text text-anchor="middle" fill="white" font-size="15" font-weight="700" font-family="Barlow, sans-serif" pointer-events="none">
-                            <tspan x="250" y="388">Shotgun</tspan>
-                            <tspan x="250" dy="17">Sights</tspan>
-                        </text>
-                        <!-- Slice 4: Muzzle Devices — angle 141.4° -->
-                        <text text-anchor="middle" fill="white" font-size="15" font-weight="700" font-family="Barlow, sans-serif" pointer-events="none">
-                            <tspan x="137" y="333">Muzzle</tspan>
-                            <tspan x="137" dy="17">Devices</tspan>
-                        </text>
-                        <!-- Slice 5: Optic Mounting — angle 192.9° -->
-                        <text text-anchor="middle" fill="white" font-size="15" font-weight="700" font-family="Barlow, sans-serif" pointer-events="none">
-                            <tspan x="109" y="211">Optic</tspan>
-                            <tspan x="109" dy="17">Mounting</tspan>
-                        </text>
-                        <!-- Slice 6: Precision Components — angle 244.3° -->
-                        <text text-anchor="middle" fill="white" font-size="15" font-weight="700" font-family="Barlow, sans-serif" pointer-events="none">
-                            <tspan x="187" y="112">Precision</tspan>
-                            <tspan x="187" dy="17">Components</tspan>
-                        </text>
+                        <!-- Slice 4: Catch 22 — 288° to 360° -->
+                        <g class="pie-slice-group" data-index="4" data-tx="-7" data-ty="-10">
+                            <path class="pie-slice"
+                                d="M 59.79,188.20 A 200,200 0 0,1 250,50 L 250,160 A 90,90 0 0,0 164.40,222.19 Z"
+                                fill="#292524" stroke="white" stroke-width="3"/>
+                            <text text-anchor="middle" fill="white" font-size="15" font-weight="700" font-family="Barlow, sans-serif" pointer-events="none">
+                                <tspan x="165" y="124">Catch</tspan>
+                                <tspan x="165" dy="17">22</tspan>
+                            </text>
+                        </g>
 
                         <!-- Center hole -->
                         <circle cx="250" cy="250" r="88" fill="#e8e6e3"/>
@@ -353,14 +364,14 @@
                 </div>
 
                 <!-- Col 2: Product Image -->
-                <div class="lg:w-1/2 flex items-center justify-center h-40 md:h-72 lg:h-[440px]">
+                <div class="w-full lg:w-1/2 flex items-center justify-center h-44 sm:h-56 md:h-64 lg:h-[440px]">
                     <img id="active-product-img" src="images/Products/No Background/Front Sights-Photoroom.png" alt="Front Sights" class="max-h-full max-w-full object-contain" style="transition: opacity 0.2s ease;">
                 </div>
 
-                <!-- Col 3: Name + CTA — spans full width on mobile, single col on desktop -->
-                <div class="col-span-2 lg:w-1/4 flex flex-row lg:flex-col items-center justify-between lg:justify-center lg:items-start gap-4 lg:gap-6">
+                <!-- Col 3: Name + CTA — full width on mobile, single col on desktop -->
+                <div class="w-full lg:w-1/4 flex flex-row lg:flex-col items-center justify-between lg:justify-center lg:items-start gap-4 lg:gap-6">
                     <h3 id="active-product-name" class="text-xl md:text-4xl font-extrabold text-charcoal text-left lg:text-left border-l-4 border-hunters-orange pl-4">Front Sights</h3>
-                    <a href="products.html" class="shrink-0 inline-block bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-2 px-4 lg:py-3 lg:px-8 rounded-lg text-sm lg:text-lg transition-all">Browse All &rarr;</a>
+                    <a id="active-product-cta" href="products-consumer.html#front-sights" class="shrink-0 inline-block bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-2 px-4 lg:py-3 lg:px-8 rounded-lg text-sm lg:text-lg transition-all">Learn More &rarr;</a>
                 </div>
 
             </div>
@@ -369,49 +380,61 @@
         <script>
             (function () {
                 const products = [
-                    { name: 'Front Sights',             l1: 'Front',     l2: 'Sights',      img: 'images/Products/No Background/Front Sights-Photoroom.png' },
-                    { name: 'Rear Sights',              l1: 'Rear',      l2: 'Sights',      img: 'images/Products/No Background/New Rear Sight photo no background.png' },
-                    { name: 'Peep Sights',              l1: 'Peep',      l2: 'Sights',      img: 'images/Products/No Background/Peep Sights-Photoroom.png' },
-                    { name: 'Shotgun Sights',           l1: 'Shotgun',   l2: 'Sights',      img: 'images/Products/No Background/Level Shotgun Sights.png' },
-                    { name: 'Muzzle Devices',           l1: 'Muzzle',    l2: 'Devices',     img: 'images/Products/No Background/Muzzle devices-Photoroom.png' },
-                    { name: 'Optic Mounting',           l1: 'Optic',     l2: 'Mounting',    img: 'images/Products/No Background/Optic Mounting-Photoroom.png' },
-                    { name: 'Precision Components',     l1: 'Precision', l2: 'Components',  img: 'images/Products/No Background/Precision Gun Components-Photoroom.png' },
+                    { name: 'Front Sights',   img: 'images/Products/No Background/Front Sights-Photoroom.png',          href: 'products-consumer.html#front-sights' },
+                    { name: 'Rear Sights',    img: 'images/Products/No Background/New Rear Sight photo no background.png', href: 'products-consumer.html#rear-sights' },
+                    { name: 'Shotgun Sights', img: 'images/Products/No Background/Level Shotgun Sights.png',             href: 'products-consumer.html#shotgun-sights' },
+                    { name: 'Peep Sights',    img: 'images/Products/No Background/Peep Sights-Photoroom.png',            href: 'products-consumer.html#peep-sights' },
+                    { name: 'Catch 22',       img: 'images/Products/Catch 22 - no background.png',                       href: 'products-consumer.html#catch-22' },
                 ];
 
-                const slices   = document.querySelectorAll('.pie-slice');
+                const groups   = document.querySelectorAll('.pie-slice-group');
+                const pills    = document.querySelectorAll('.product-pill');
                 const cardImg  = document.getElementById('active-product-img');
                 const cardName = document.getElementById('active-product-name');
+                const cardCta  = document.getElementById('active-product-cta');
                 let active = 0;
 
                 function select(i) {
-                    slices.forEach((s, idx) => {
+                    groups.forEach((g, idx) => {
+                        const path = g.querySelector('.pie-slice');
                         if (idx === i) {
-                            s.setAttribute('fill', '#FF6600');
-                            s.setAttribute('transform', `translate(${s.dataset.tx}, ${s.dataset.ty})`);
+                            path.setAttribute('fill', '#FF6600');
+                            g.setAttribute('transform', `translate(${g.dataset.tx}, ${g.dataset.ty})`);
                         } else {
-                            s.setAttribute('fill', '#292524');
-                            s.setAttribute('transform', 'translate(0,0)');
+                            path.setAttribute('fill', '#292524');
+                            g.setAttribute('transform', 'translate(0,0)');
                         }
+                    });
+                    pills.forEach((p, idx) => {
+                        p.classList.toggle('active-pill', idx === i);
                     });
                     cardImg.style.opacity = '0';
                     setTimeout(() => {
                         cardImg.src = products[i].img;
                         cardImg.alt = products[i].name;
                         cardName.textContent = products[i].name;
+                        cardCta.href = products[i].href;
                         cardImg.style.opacity = '1';
                     }, 200);
                     active = i;
                 }
 
-                slices.forEach((s, i) => {
-                    s.style.transition = 'fill 0.2s ease, transform 0.2s ease';
-                    s.addEventListener('click', () => select(i));
-                    s.addEventListener('mouseenter', () => {
-                        if (i !== active) s.setAttribute('fill', '#E55A00');
+                groups.forEach((g, i) => {
+                    const path = g.querySelector('.pie-slice');
+                    g.style.transition = 'transform 0.2s ease';
+                    path.style.transition = 'fill 0.2s ease';
+                    path.style.cursor = 'pointer';
+                    path.addEventListener('click', () => select(i));
+                    path.addEventListener('mouseenter', () => {
+                        if (i !== active) path.setAttribute('fill', '#E55A00');
                     });
-                    s.addEventListener('mouseleave', () => {
-                        if (i !== active) s.setAttribute('fill', '#292524');
+                    path.addEventListener('mouseleave', () => {
+                        if (i !== active) path.setAttribute('fill', '#292524');
                     });
+                });
+
+                pills.forEach((p, i) => {
+                    p.addEventListener('click', () => select(i));
                 });
 
                 select(0);
