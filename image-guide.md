@@ -91,10 +91,10 @@ A breakdown of every image slot on the site, what to shoot, and why. Organized b
 **Shot:** A rear sight installed on a pistol slide, photographed from just behind the sight looking forward — the sight notch in sharp focus, barrel softly blurred ahead
 **Why:** The shooter's-eye-view shows the product in its actual use context and immediately communicates what a "crisp sight picture" means.
 
-### Peep Sights
+### Peep Tang Sights
 **Current file:** `Ruger Pistol.jpg` (a pistol — does not match the product)
 **Shot:** A peep tang sight mounted on a lever-action or bolt-action rifle, photographed at a 3/4 angle showing both the sight and the rifle stock it mounts to
-**Why:** Peep sights are specifically for rifles — the product needs to be shown on the correct platform to reach the right buyer.
+**Why:** Peep tang sights are specifically for rifles — the product needs to be shown on the correct platform to reach the right buyer.
 
 ### Shotgun Sights
 **Current file:** `Old Product.jpg` (generic vintage product)
