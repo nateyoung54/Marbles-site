@@ -220,7 +220,11 @@
                 <div id="apply-success" class="hidden bg-green-50 border border-green-200 rounded-lg p-8 text-center">
                     <h2 class="text-2xl font-bold text-green-800 mb-2">Application received</h2>
                     <p class="text-green-700 text-lg mb-3">Thanks for your interest in Marble Arms. We'll give you a call at the number you provided.</p>
-                    <p class="text-green-700">Want us to see your resume first? Email it to <a href="mailto:customerservice@marblearms.com?subject=Resume" class="underline font-semibold">customerservice@marblearms.com</a>.</p>
+                    <p class="text-green-700 mb-4">Want us to see your resume too? Email it over and we'll match it to your application.</p>
+                    <a href="mailto:customerservice@marblearms.com?subject=Job%20Application%20-%20Marble%20Arms&amp;body=Name%3A%0D%0APhone%20number%3A%0D%0AEmail%3A%0D%0AType%20of%20work%20you%27re%20interested%20in%3A%0D%0AAvailability%20%2F%20shift%20preference%3A%0D%0A%0D%0APlease%20attach%20your%20resume%20before%20sending.%20Thanks%21%0D%0A"
+                       class="inline-block bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-2.5 px-6 rounded-lg text-base transition-all">
+                        Email Us Your Resume &rarr;
+                    </a>
                 </div>
 
                 <div id="apply-form-wrap">
@@ -229,7 +233,7 @@
 
                     <!-- Error message (shown if submission fails) -->
                     <div id="apply-error" class="hidden bg-red-50 border border-red-200 rounded-lg p-6 text-center mb-6">
-                        <p id="apply-error-text" class="text-red-700">Something went wrong sending your application. Please try again, or email your resume to <a href="mailto:customerservice@marblearms.com" class="underline font-semibold">customerservice@marblearms.com</a> directly.</p>
+                        <p id="apply-error-text" class="text-red-700">Something went wrong sending your application. Please try again, or <a href="mailto:customerservice@marblearms.com?subject=Job%20Application%20-%20Marble%20Arms&amp;body=Name%3A%0D%0APhone%20number%3A%0D%0AEmail%3A%0D%0AType%20of%20work%20you%27re%20interested%20in%3A%0D%0AAvailability%20%2F%20shift%20preference%3A%0D%0A%0D%0APlease%20attach%20your%20resume%20before%20sending.%20Thanks%21%0D%0A" class="underline font-semibold">email us your application</a> directly.</p>
                         <p id="apply-error-detail" class="hidden text-xs text-red-600 mt-2 font-mono break-words"></p>
                     </div>
 
@@ -274,10 +278,17 @@
                             </select>
                         </div>
 
-                        <!-- Resume note — uploads need a Web3Forms PRO plan, so resumes come by email -->
+                        <!-- Resume note — uploads need a Web3Forms PRO plan, so resumes come by email.
+                             The mailto prefills subject and body so the applicant only has to
+                             fill the blanks and attach the file. -->
                         <div class="mb-5 bg-gray-100 border-l-4 border-hunters-orange rounded-lg p-4">
                             <p class="text-sm font-semibold text-charcoal mb-1">Sending a resume</p>
-                            <p class="text-sm text-gray-600 leading-relaxed">Email it to <a href="mailto:customerservice@marblearms.com?subject=Resume" class="text-hunters-orange font-semibold hover:underline">customerservice@marblearms.com</a> and we'll match it to your application. A resume isn't required — submit this form either way and we'll call you.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-3">A resume isn't required — submit this form either way and we'll call you. If you'd like us to see one, email it over and we'll match it to your application.</p>
+                            <a href="mailto:customerservice@marblearms.com?subject=Job%20Application%20-%20Marble%20Arms&amp;body=Name%3A%0D%0APhone%20number%3A%0D%0AEmail%3A%0D%0AType%20of%20work%20you%27re%20interested%20in%3A%0D%0AAvailability%20%2F%20shift%20preference%3A%0D%0A%0D%0APlease%20attach%20your%20resume%20before%20sending.%20Thanks%21%0D%0A"
+                               class="inline-block bg-charcoal hover:bg-charcoal-light text-white font-bold py-2.5 px-5 rounded-lg text-sm transition-all">
+                                Email Us Your Resume &rarr;
+                            </a>
+                            <p class="text-xs text-gray-500 mt-2">Opens your email app with the questions already filled in.</p>
                         </div>
 
                         <!-- Optional note -->
@@ -445,7 +456,8 @@
             const error     = document.getElementById('apply-error');
             const errorText = document.getElementById('apply-error-text');
 
-            const DEFAULT_ERROR = 'Something went wrong sending your application. Please try again, or email us at <a href="mailto:customerservice@marblearms.com" class="underline font-semibold">customerservice@marblearms.com</a> directly.';
+            const APPLY_MAILTO = 'mailto:customerservice@marblearms.com?subject=Job%20Application%20-%20Marble%20Arms&body=Name%3A%0D%0APhone%20number%3A%0D%0AEmail%3A%0D%0AType%20of%20work%20you%27re%20interested%20in%3A%0D%0AAvailability%20%2F%20shift%20preference%3A%0D%0A%0D%0APlease%20attach%20your%20resume%20before%20sending.%20Thanks%21%0D%0A';
+            const DEFAULT_ERROR = 'Something went wrong sending your application. Please try again, or <a href="' + APPLY_MAILTO + '" class="underline font-semibold">email us your application</a> directly.';
 
             function showError(html, detail) {
                 errorText.innerHTML = html;
