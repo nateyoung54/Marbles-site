@@ -219,7 +219,8 @@
                 <!-- Success message (shown after successful submission) -->
                 <div id="apply-success" class="hidden bg-green-50 border border-green-200 rounded-lg p-8 text-center">
                     <h2 class="text-2xl font-bold text-green-800 mb-2">Application received</h2>
-                    <p class="text-green-700 text-lg">Thanks for your interest in Marble Arms. We'll review your resume and give you a call.</p>
+                    <p class="text-green-700 text-lg mb-3">Thanks for your interest in Marble Arms. We'll give you a call at the number you provided.</p>
+                    <p class="text-green-700">Want us to see your resume first? Email it to <a href="mailto:customerservice@marblearms.com?subject=Resume" class="underline font-semibold">customerservice@marblearms.com</a>.</p>
                 </div>
 
                 <div id="apply-form-wrap">
@@ -232,7 +233,7 @@
                         <p id="apply-error-detail" class="hidden text-xs text-red-600 mt-2 font-mono break-words"></p>
                     </div>
 
-                    <form id="apply-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+                    <form id="apply-form" action="https://api.web3forms.com/submit" method="POST">
                         <input type="hidden" name="access_key" value="566ddee3-2403-4fb5-a35e-0c5629702f13">
                         <input type="hidden" name="subject" value="New Job Application – Marble Arms">
                         <input type="hidden" name="from_name" value="Marble Arms Careers Form">
@@ -273,19 +274,10 @@
                             </select>
                         </div>
 
-                        <!-- Resume -->
-                        <div class="mb-5">
-                            <label for="resume" class="block text-sm font-medium text-gray-700 mb-2">Resume <span class="text-red-500">*</span></label>
-                            <input type="file" id="resume" name="attachment" required accept=".pdf,.doc,.docx,.txt,.rtf,.jpg,.jpeg,.png"
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-hunters-orange file:text-white hover:file:bg-hunters-orange-dark file:cursor-pointer">
-                            <p class="text-xs text-gray-500 mt-1.5">PDF, Word doc, or a clear photo of your resume. 5 MB max.</p>
-                            <!-- Selected-file chip: lets an applicant see and clear their choice -->
-                            <div id="resume-chip" class="hidden mt-2 flex items-center gap-3 bg-gray-100 border border-gray-300 rounded-lg px-3 py-2">
-                                <span id="resume-chip-name" class="text-sm text-charcoal font-medium truncate flex-1"></span>
-                                <span id="resume-chip-size" class="text-xs text-gray-500 flex-shrink-0"></span>
-                                <button type="button" id="resume-clear" class="text-sm font-bold text-red-600 hover:text-red-800 flex-shrink-0" aria-label="Remove selected resume">Remove</button>
-                            </div>
-                            <p id="resume-size-warning" class="hidden text-sm text-red-600 mt-2 font-medium"></p>
+                        <!-- Resume note — uploads need a Web3Forms PRO plan, so resumes come by email -->
+                        <div class="mb-5 bg-gray-100 border-l-4 border-hunters-orange rounded-lg p-4">
+                            <p class="text-sm font-semibold text-charcoal mb-1">Sending a resume</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">Email it to <a href="mailto:customerservice@marblearms.com?subject=Resume" class="text-hunters-orange font-semibold hover:underline">customerservice@marblearms.com</a> and we'll match it to your application. A resume isn't required — submit this form either way and we'll call you.</p>
                         </div>
 
                         <!-- Optional note -->
@@ -452,16 +444,8 @@
             const success   = document.getElementById('apply-success');
             const error     = document.getElementById('apply-error');
             const errorText = document.getElementById('apply-error-text');
-            const resume    = document.getElementById('resume');
 
-            const chip     = document.getElementById('resume-chip');
-            const chipName = document.getElementById('resume-chip-name');
-            const chipSize = document.getElementById('resume-chip-size');
-            const clearBtn = document.getElementById('resume-clear');
-            const sizeWarn = document.getElementById('resume-size-warning');
-
-            const MAX_BYTES = 5 * 1024 * 1024; // Web3Forms attachment limit
-            const DEFAULT_ERROR = 'Something went wrong sending your application. Please try again, or email your resume to <a href="mailto:customerservice@marblearms.com" class="underline font-semibold">customerservice@marblearms.com</a> directly.';
+            const DEFAULT_ERROR = 'Something went wrong sending your application. Please try again, or email us at <a href="mailto:customerservice@marblearms.com" class="underline font-semibold">customerservice@marblearms.com</a> directly.';
 
             function showError(html, detail) {
                 errorText.innerHTML = html;
@@ -478,44 +462,9 @@
                 error.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
 
-            function mb(bytes) { return (bytes / 1024 / 1024).toFixed(1) + ' MB'; }
-
-            // Show the chosen file, flag oversize immediately rather than at submit
-            function refreshChip() {
-                const file = resume.files[0];
-                if (!file) {
-                    chip.classList.add('hidden');
-                    sizeWarn.classList.add('hidden');
-                    return;
-                }
-                chipName.textContent = file.name;
-                chipSize.textContent = mb(file.size);
-                chip.classList.remove('hidden');
-                if (file.size > MAX_BYTES) {
-                    sizeWarn.textContent = `That file is ${mb(file.size)} — over the 5 MB limit. Remove it and attach a smaller file, or save it as a PDF.`;
-                    sizeWarn.classList.remove('hidden');
-                } else {
-                    sizeWarn.classList.add('hidden');
-                }
-            }
-
-            resume.addEventListener('change', refreshChip);
-            clearBtn.addEventListener('click', () => {
-                resume.value = '';
-                refreshChip();
-                resume.focus();
-            });
-
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 error.classList.add('hidden');
-
-                const file = resume.files[0];
-                if (file && file.size > MAX_BYTES) {
-                    showError('That resume is ' + mb(file.size) + ', over the 5 MB limit. Remove it and attach a smaller file, or email it to <a href="mailto:customerservice@marblearms.com" class="underline font-semibold">customerservice@marblearms.com</a> instead.');
-                    return;
-                }
-
                 submit.disabled = true;
                 submit.textContent = 'Sending…';
 
