@@ -134,6 +134,7 @@
                         <!-- Error message (shown if submission fails) -->
                         <div id="contact-error" class="hidden bg-red-50 border border-red-200 rounded-lg p-4 text-center mb-4">
                             <p class="text-red-700">Something went wrong sending your message. Please try again, or email <a href="mailto:customerservice@marblearms.com" class="underline font-semibold">customerservice@marblearms.com</a> directly.</p>
+                            <p id="contact-error-detail" class="hidden text-xs text-red-600 mt-2 font-mono break-words"></p>
                         </div>
 
                         <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
@@ -316,6 +317,12 @@
                         throw new Error(data.message || 'Submission failed');
                     }
                 } catch (err) {
+                    const detail = document.getElementById('contact-error-detail');
+                    if (detail) {
+                        detail.textContent = 'Details: ' + (err.message || 'unknown error');
+                        detail.classList.remove('hidden');
+                    }
+                    console.error('[MarbleForm] contact submit failed:', err.message);
                     error.classList.remove('hidden');
                     submit.disabled = false;
                     submit.textContent = 'Send Message';

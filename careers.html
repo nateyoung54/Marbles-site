@@ -229,6 +229,7 @@
                     <!-- Error message (shown if submission fails) -->
                     <div id="apply-error" class="hidden bg-red-50 border border-red-200 rounded-lg p-6 text-center mb-6">
                         <p id="apply-error-text" class="text-red-700">Something went wrong sending your application. Please try again, or email your resume to <a href="mailto:customerservice@marblearms.com" class="underline font-semibold">customerservice@marblearms.com</a> directly.</p>
+                        <p id="apply-error-detail" class="hidden text-xs text-red-600 mt-2 font-mono break-words"></p>
                     </div>
 
                     <form id="apply-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
@@ -278,6 +279,13 @@
                             <input type="file" id="resume" name="attachment" required accept=".pdf,.doc,.docx,.txt,.rtf,.jpg,.jpeg,.png"
                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-hunters-orange file:text-white hover:file:bg-hunters-orange-dark file:cursor-pointer">
                             <p class="text-xs text-gray-500 mt-1.5">PDF, Word doc, or a clear photo of your resume. 5 MB max.</p>
+                            <!-- Selected-file chip: lets an applicant see and clear their choice -->
+                            <div id="resume-chip" class="hidden mt-2 flex items-center gap-3 bg-gray-100 border border-gray-300 rounded-lg px-3 py-2">
+                                <span id="resume-chip-name" class="text-sm text-charcoal font-medium truncate flex-1"></span>
+                                <span id="resume-chip-size" class="text-xs text-gray-500 flex-shrink-0"></span>
+                                <button type="button" id="resume-clear" class="text-sm font-bold text-red-600 hover:text-red-800 flex-shrink-0" aria-label="Remove selected resume">Remove</button>
+                            </div>
+                            <p id="resume-size-warning" class="hidden text-sm text-red-600 mt-2 font-medium"></p>
                         </div>
 
                         <!-- Optional note -->
@@ -446,14 +454,57 @@
             const errorText = document.getElementById('apply-error-text');
             const resume    = document.getElementById('resume');
 
+            const chip     = document.getElementById('resume-chip');
+            const chipName = document.getElementById('resume-chip-name');
+            const chipSize = document.getElementById('resume-chip-size');
+            const clearBtn = document.getElementById('resume-clear');
+            const sizeWarn = document.getElementById('resume-size-warning');
+
             const MAX_BYTES = 5 * 1024 * 1024; // Web3Forms attachment limit
             const DEFAULT_ERROR = 'Something went wrong sending your application. Please try again, or email your resume to <a href="mailto:customerservice@marblearms.com" class="underline font-semibold">customerservice@marblearms.com</a> directly.';
 
-            function showError(html) {
+            function showError(html, detail) {
                 errorText.innerHTML = html;
+                const d = document.getElementById('apply-error-detail');
+                if (d) {
+                    if (detail) {
+                        d.textContent = 'Details: ' + detail;
+                        d.classList.remove('hidden');
+                    } else {
+                        d.classList.add('hidden');
+                    }
+                }
                 error.classList.remove('hidden');
                 error.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
+
+            function mb(bytes) { return (bytes / 1024 / 1024).toFixed(1) + ' MB'; }
+
+            // Show the chosen file, flag oversize immediately rather than at submit
+            function refreshChip() {
+                const file = resume.files[0];
+                if (!file) {
+                    chip.classList.add('hidden');
+                    sizeWarn.classList.add('hidden');
+                    return;
+                }
+                chipName.textContent = file.name;
+                chipSize.textContent = mb(file.size);
+                chip.classList.remove('hidden');
+                if (file.size > MAX_BYTES) {
+                    sizeWarn.textContent = `That file is ${mb(file.size)} — over the 5 MB limit. Remove it and attach a smaller file, or save it as a PDF.`;
+                    sizeWarn.classList.remove('hidden');
+                } else {
+                    sizeWarn.classList.add('hidden');
+                }
+            }
+
+            resume.addEventListener('change', refreshChip);
+            clearBtn.addEventListener('click', () => {
+                resume.value = '';
+                refreshChip();
+                resume.focus();
+            });
 
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
@@ -461,7 +512,7 @@
 
                 const file = resume.files[0];
                 if (file && file.size > MAX_BYTES) {
-                    showError('That resume is larger than the 5 MB limit. Try saving it as a PDF, or email it to <a href="mailto:customerservice@marblearms.com" class="underline font-semibold">customerservice@marblearms.com</a> instead.');
+                    showError('That resume is ' + mb(file.size) + ', over the 5 MB limit. Remove it and attach a smaller file, or email it to <a href="mailto:customerservice@marblearms.com" class="underline font-semibold">customerservice@marblearms.com</a> instead.');
                     return;
                 }
 
@@ -483,7 +534,8 @@
                         throw new Error(data.message || 'Submission failed');
                     }
                 } catch (err) {
-                    showError(DEFAULT_ERROR);
+                    console.error('[MarbleForm] apply submit failed:', err.message);
+                    showError(DEFAULT_ERROR, err.message);
                     submit.disabled = false;
                     submit.textContent = 'Submit Application';
                 }
