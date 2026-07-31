@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply | Marble Arms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hunters-orange': '#FF6600',
+                        'hunters-orange-dark': '#E55A00',
+                        'warm-gray': '#F5F5F4',
+                        'charcoal': '#1C1917',
+                        'charcoal-light': '#292524',
+                        'earth-tan': '#A8927D',
+                    },
+                    fontFamily: {
+                        'heading': ['Barlow', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Barlow', sans-serif;
+        }
+        .steel-dark {
+            background-color: #1a1a1a;
+            background-image:
+                linear-gradient(135deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+                linear-gradient(225deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+                linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+                linear-gradient(315deg, rgba(255,255,255,0.02) 25%, transparent 25%);
+            background-size: 20px 20px;
+        }
+        .grey-texture {
+            background-color: #e8e6e3;
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(0,0,0,0.02) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, rgba(0,0,0,0.02) 1px, transparent 1px);
+            background-size: 8px 8px;
+        }
+        .card-depth {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+        }
+        .section-accent {
+            border-left: 4px solid #FF6600;
+            padding-left: 1rem;
+        }
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        .photo-placeholder {
+            background: linear-gradient(135deg, #3a3835 0%, #292524 100%);
+            border: 2px dashed #57534E;
+        }
+        /* Testimonial slider — slides stack in one grid cell and cross-fade */
+        #testimonial-track {
+            display: grid;
+        }
+        .testimonial-slide {
+            grid-area: 1 / 1;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease;
+        }
+        .testimonial-slide[data-active="true"] {
+            opacity: 1;
+            visibility: visible;
+        }
+        .testimonial-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 9999px;
+            background-color: rgba(255,255,255,0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+        .testimonial-dot:hover {
+            background-color: rgba(255,255,255,0.6);
+        }
+        .testimonial-dot[aria-selected="true"] {
+            background-color: #FF6600;
+            transform: scale(1.25);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .testimonial-slide { transition: none; }
+        }
+    </style>
+</head>
+<body class="font-body text-charcoal-light grey-texture">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-charcoal z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <a href="index.html" class="flex-shrink-0">
+                    <img src="images/Logos/transparent logo.png" alt="Marble Arms" class="h-14 md:h-20 w-auto brightness-0 invert hover:opacity-80 transition-opacity">
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="manufacturing.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">Manufacturing</a>
+                    <a href="history.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">Culture &amp; History</a>
+                    <a href="products.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">Products</a>
+                    <a href="contact.html" class="text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="products.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">Products</a>
+                <a href="manufacturing.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">Manufacturing</a>
+                <a href="history.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">Culture &amp; History</a>
+                <a href="contact.html" class="block py-2 text-white hover:text-hunters-orange transition-colors font-medium text-lg">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="steel-dark pt-24 border-b-4 border-hunters-orange">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-14">
+            <!-- Breadcrumb -->
+            <nav class="text-sm mb-4">
+                <a href="index.html" class="text-white/80 hover:text-hunters-orange transition-colors">Home</a>
+                <span class="text-gray-600 mx-2">/</span>
+                <span class="text-hunters-orange">Apply</span>
+            </nav>
+            <div class="section-accent">
+                <h1 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">Apply at Marble Arms</h1>
+            </div>
+            <p class="text-lg md:text-2xl text-gray-300 max-w-2xl">We're always willing to hire good people. Fill this out and we'll call you.</p>
+        </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────
+         EMPLOYEE TESTIMONIALS — HIDDEN UNTIL CONTENT IS READY
+
+         TO GO LIVE: delete the "REMOVE THIS LINE" marker lines directly
+         below and above the closing </section>, then fill in each
+         .testimonial-slide with a real photo (images/Careers/), quote,
+         name, and role. Add or remove slides freely — the dots and timer
+         adapt automatically. The slider JS is already in place at the
+         bottom of this file and no-ops while the section is absent.
+    ───────────────────────────────────────── -->
+    <!-- REMOVE THIS LINE TO PUBLISH TESTIMONIALS
+    <section class="py-12 md:py-16 steel-dark border-b-4 border-hunters-orange">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-xs text-hunters-orange tracking-[0.25em] uppercase font-semibold mb-3 text-center">In Their Words</p>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-8 md:mb-10 text-center">What It's Like to Work Here</h2>
+
+            <div id="testimonials" class="relative">
+                <div id="testimonial-track" aria-live="polite">
+
+                    [Slide 1]
+                    <div class="testimonial-slide" data-active="true">
+                        <div class="flex flex-col sm:flex-row items-center gap-6 md:gap-10">
+                            <div class="w-40 h-40 md:w-52 md:h-52 rounded-xl overflow-hidden flex-shrink-0 bg-charcoal-light">
+                                <img src="images/Careers/testimonial-1.jpg" alt="" class="w-full h-full object-cover" onerror="this.closest('div').classList.add('photo-placeholder');this.remove();">
+                            </div>
+                            <blockquote class="text-center sm:text-left">
+                                <p class="text-lg md:text-2xl text-white leading-relaxed font-medium mb-4">&ldquo;[ PLACEHOLDER — replace with a real employee quote. ]&rdquo;</p>
+                                <footer class="text-hunters-orange font-bold">[ Employee Name ]<span class="block text-gray-400 font-medium text-sm mt-0.5">[ Job Title ] &middot; [ X ] years at Marble Arms</span></footer>
+                            </blockquote>
+                        </div>
+                    </div>
+
+                    [Slide 2]
+                    <div class="testimonial-slide">
+                        <div class="flex flex-col sm:flex-row items-center gap-6 md:gap-10">
+                            <div class="w-40 h-40 md:w-52 md:h-52 rounded-xl overflow-hidden flex-shrink-0 bg-charcoal-light">
+                                <img src="images/Careers/testimonial-2.jpg" alt="" class="w-full h-full object-cover" onerror="this.closest('div').classList.add('photo-placeholder');this.remove();">
+                            </div>
+                            <blockquote class="text-center sm:text-left">
+                                <p class="text-lg md:text-2xl text-white leading-relaxed font-medium mb-4">&ldquo;[ PLACEHOLDER — replace with a real employee quote. ]&rdquo;</p>
+                                <footer class="text-hunters-orange font-bold">[ Employee Name ]<span class="block text-gray-400 font-medium text-sm mt-0.5">[ Job Title ] &middot; [ X ] years at Marble Arms</span></footer>
+                            </blockquote>
+                        </div>
+                    </div>
+
+                    [Slide 3]
+                    <div class="testimonial-slide">
+                        <div class="flex flex-col sm:flex-row items-center gap-6 md:gap-10">
+                            <div class="w-40 h-40 md:w-52 md:h-52 rounded-xl overflow-hidden flex-shrink-0 bg-charcoal-light">
+                                <img src="images/Careers/testimonial-3.jpg" alt="" class="w-full h-full object-cover" onerror="this.closest('div').classList.add('photo-placeholder');this.remove();">
+                            </div>
+                            <blockquote class="text-center sm:text-left">
+                                <p class="text-lg md:text-2xl text-white leading-relaxed font-medium mb-4">&ldquo;[ PLACEHOLDER — replace with a real employee quote. ]&rdquo;</p>
+                                <footer class="text-hunters-orange font-bold">[ Employee Name ]<span class="block text-gray-400 font-medium text-sm mt-0.5">[ Job Title ] &middot; [ X ] years at Marble Arms</span></footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                [Dots]
+                <div id="testimonial-dots" class="flex justify-center gap-3 mt-8"></div>
+            </div>
+        </div>
+    </section>
+    REMOVE THIS LINE TO PUBLISH TESTIMONIALS -->
+
+    <!-- Application Form -->
+    <section class="py-12 md:py-16 grey-texture">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-xl p-6 md:p-12 card-depth">
+
+                <!-- Success message (shown after successful submission) -->
+                <div id="apply-success" class="hidden bg-green-50 border border-green-200 rounded-lg p-8 text-center">
+                    <h2 class="text-2xl font-bold text-green-800 mb-2">Application received</h2>
+                    <p class="text-green-700 text-lg">Thanks for your interest in Marble Arms. We'll review your resume and give you a call.</p>
+                </div>
+
+                <div id="apply-form-wrap">
+                    <h2 class="text-2xl font-bold text-charcoal mb-2">Submit Your Application</h2>
+                    <p class="text-gray-600 mb-8">Takes about a minute. Everything below is what we need to get in touch — no account, no login.</p>
+
+                    <!-- Error message (shown if submission fails) -->
+                    <div id="apply-error" class="hidden bg-red-50 border border-red-200 rounded-lg p-6 text-center mb-6">
+                        <p id="apply-error-text" class="text-red-700">Something went wrong sending your application. Please try again, or email your resume to <a href="mailto:customerservice@marblearms.com" class="underline font-semibold">customerservice@marblearms.com</a> directly.</p>
+                    </div>
+
+                    <form id="apply-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="access_key" value="566ddee3-2403-4fb5-a35e-0c5629702f13">
+                        <input type="hidden" name="subject" value="New Job Application – Marble Arms">
+                        <input type="hidden" name="from_name" value="Marble Arms Careers Form">
+                        <!-- Honeypot for spam bots -->
+                        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+                        <!-- Name -->
+                        <div class="mb-5">
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="name" name="name" required autocomplete="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="First and last name">
+                        </div>
+
+                        <!-- Phone & Email -->
+                        <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone <span class="text-red-500">*</span></label>
+                                <input type="tel" id="phone" name="phone" required autocomplete="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="(906) 555-0123">
+                                <p class="text-xs text-gray-500 mt-1.5">This is how we'll reach you.</p>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="email" name="email" required autocomplete="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="you@example.com">
+                            </div>
+                        </div>
+
+                        <!-- Area of interest -->
+                        <div class="mb-5">
+                            <label for="position" class="block text-sm font-medium text-gray-700 mb-2">What kind of work are you interested in?</label>
+                            <select id="position" name="position" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange bg-white">
+                                <option value="Open to anything">Open to anything</option>
+                                <option value="Machining / CNC">Machining / CNC</option>
+                                <option value="Assembly &amp; Finishing">Assembly &amp; Finishing</option>
+                                <option value="Quality &amp; Inspection">Quality &amp; Inspection</option>
+                                <option value="Maintenance">Maintenance</option>
+                                <option value="Shipping &amp; Warehouse">Shipping &amp; Warehouse</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Office / Administrative">Office / Administrative</option>
+                            </select>
+                        </div>
+
+                        <!-- Resume -->
+                        <div class="mb-5">
+                            <label for="resume" class="block text-sm font-medium text-gray-700 mb-2">Resume <span class="text-red-500">*</span></label>
+                            <input type="file" id="resume" name="attachment" required accept=".pdf,.doc,.docx,.txt,.rtf,.jpg,.jpeg,.png"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-hunters-orange file:text-white hover:file:bg-hunters-orange-dark file:cursor-pointer">
+                            <p class="text-xs text-gray-500 mt-1.5">PDF, Word doc, or a clear photo of your resume. 5 MB max.</p>
+                        </div>
+
+                        <!-- Optional note -->
+                        <div class="mb-8">
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Anything else we should know? <span class="text-gray-400 font-normal">(optional)</span></label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="Experience, availability, shift preference, or anything you'd like to add"></textarea>
+                        </div>
+
+                        <button id="apply-submit-btn" type="submit" class="w-full bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-4 px-8 rounded-lg text-lg transition-all border-b-4 border-hunters-orange-dark disabled:opacity-60 disabled:cursor-not-allowed">
+                            Submit Application
+                        </button>
+                        <p class="text-sm text-gray-500 mt-4 text-center">Marble Arms is an equal opportunity employer.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white pt-16 border-t-4 border-hunters-orange">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <!-- Products Column -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Products</h4>
+                    <ul class="space-y-2">
+                        <li><a href="products-consumer.html" class="text-white/80 hover:text-hunters-orange transition-colors">Consumer Products</a></li>
+                        <li><a href="products-oem.html" class="text-white/80 hover:text-hunters-orange transition-colors">OEM Portfolio</a></li>
+                        <li><a href="products-consumer.html#where-to-buy" class="text-white/80 hover:text-hunters-orange transition-colors">Find a Distributor</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company Column -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="history.html" class="text-white/80 hover:text-hunters-orange transition-colors">Culture &amp; History</a></li>
+                        <li><a href="manufacturing.html" class="text-white/80 hover:text-hunters-orange transition-colors">Manufacturing</a></li>
+                        <li><a href="careers.html" class="text-white/80 hover:text-hunters-orange transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Column -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="text-white/80 hover:text-hunters-orange transition-colors">Contact Us</a></li>
+                        <li><a href="contact-oem.html" class="text-white/80 hover:text-hunters-orange transition-colors">OEM Sales</a></li>
+                    </ul>
+                </div>
+
+                <!-- Connect Column -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/company/marble-arms" target="_blank" rel="noopener" class="text-white/80 hover:text-hunters-orange transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.938v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0h.003z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/marblearms" target="_blank" rel="noopener" class="text-white/80 hover:text-hunters-orange transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Logo and Bottom Bar -->
+        </div>
+    <div class="pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <img src="images/Logos/transparent logo.png" alt="Marble Arms" class="h-10 w-auto brightness-0 invert mb-4 md:mb-0">
+                <p class="text-white/80 text-sm text-center md:text-right">
+                    &copy; 2026 Marble Arms. American Made. Gladstone, Michigan USA.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            });
+        });
+    </script>
+
+    <!-- Employee Testimonial Slider -->
+    <script>
+        (function () {
+            const root   = document.getElementById('testimonials');
+            const slides = Array.from(document.querySelectorAll('.testimonial-slide'));
+            const dotWrap = document.getElementById('testimonial-dots');
+            if (!root || slides.length === 0) return;
+
+            const INTERVAL = 7000;
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let index = 0;
+            let timer = null;
+
+            // Build one dot per slide
+            const dots = slides.map((_, i) => {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'testimonial-dot';
+                dot.setAttribute('role', 'tab');
+                dot.setAttribute('aria-label', `Show testimonial ${i + 1} of ${slides.length}`);
+                dot.addEventListener('click', () => { show(i); restart(); });
+                dotWrap.appendChild(dot);
+                return dot;
+            });
+            dotWrap.setAttribute('role', 'tablist');
+
+            function show(i) {
+                index = (i + slides.length) % slides.length;
+                slides.forEach((s, n) => s.setAttribute('data-active', n === index ? 'true' : 'false'));
+                dots.forEach((d, n) => d.setAttribute('aria-selected', n === index ? 'true' : 'false'));
+            }
+
+            function start() {
+                // A single testimonial has nothing to rotate to.
+                if (timer || reduceMotion || slides.length < 2) return;
+                timer = setInterval(() => show(index + 1), INTERVAL);
+            }
+            function stop() {
+                clearInterval(timer);
+                timer = null;
+            }
+            function restart() { stop(); start(); }
+
+            // Don't advance out from under someone who is reading or interacting
+            root.addEventListener('mouseenter', stop);
+            root.addEventListener('mouseleave', start);
+            root.addEventListener('focusin', stop);
+            root.addEventListener('focusout', start);
+            document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+
+            show(0);
+            start();
+        })();
+    </script>
+
+    <!-- Application Form Submission -->
+    <script>
+        (function () {
+            const form      = document.getElementById('apply-form');
+            const formWrap  = document.getElementById('apply-form-wrap');
+            const submit    = document.getElementById('apply-submit-btn');
+            const success   = document.getElementById('apply-success');
+            const error     = document.getElementById('apply-error');
+            const errorText = document.getElementById('apply-error-text');
+            const resume    = document.getElementById('resume');
+
+            const MAX_BYTES = 5 * 1024 * 1024; // Web3Forms attachment limit
+            const DEFAULT_ERROR = 'Something went wrong sending your application. Please try again, or email your resume to <a href="mailto:customerservice@marblearms.com" class="underline font-semibold">customerservice@marblearms.com</a> directly.';
+
+            function showError(html) {
+                errorText.innerHTML = html;
+                error.classList.remove('hidden');
+                error.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                error.classList.add('hidden');
+
+                const file = resume.files[0];
+                if (file && file.size > MAX_BYTES) {
+                    showError('That resume is larger than the 5 MB limit. Try saving it as a PDF, or email it to <a href="mailto:customerservice@marblearms.com" class="underline font-semibold">customerservice@marblearms.com</a> instead.');
+                    return;
+                }
+
+                submit.disabled = true;
+                submit.textContent = 'Sending…';
+
+                try {
+                    const res = await fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    const data = await res.json();
+                    if (res.ok && data.success) {
+                        formWrap.classList.add('hidden');
+                        success.classList.remove('hidden');
+                        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        throw new Error(data.message || 'Submission failed');
+                    }
+                } catch (err) {
+                    showError(DEFAULT_ERROR);
+                    submit.disabled = false;
+                    submit.textContent = 'Submit Application';
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
