@@ -211,97 +211,31 @@
     </section>
     REMOVE THIS LINE TO PUBLISH TESTIMONIALS -->
 
-    <!-- Application Form -->
+    <!-- How to Apply -->
     <section class="py-12 md:py-16 grey-texture">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white rounded-xl p-6 md:p-12 card-depth">
+                <h2 class="text-2xl md:text-3xl font-bold text-charcoal mb-3">How to Apply</h2>
+                <p class="text-gray-600 leading-relaxed mb-8">Click the button below. It opens an email with our questions already filled in — answer them, attach your resume if you have one, and hit send. That's the whole process.</p>
 
-                <!-- Success message (shown after successful submission) -->
-                <div id="apply-success" class="hidden bg-green-50 border border-green-200 rounded-lg p-8 text-center">
-                    <h2 class="text-2xl font-bold text-green-800 mb-2">Application received</h2>
-                    <p class="text-green-700 text-lg mb-3">Thanks for your interest in Marble Arms. We'll give you a call at the number you provided.</p>
-                    <p class="text-green-700 mb-4">Want us to see your resume too? Email it over and we'll match it to your application.</p>
-                    <a href="mailto:customerservice@marblearms.com?subject=Job%20Application%20-%20Marble%20Arms&amp;body=Name%3A%0D%0APhone%20number%3A%0D%0AEmail%3A%0D%0AType%20of%20work%20you%27re%20interested%20in%3A%0D%0AAvailability%20%2F%20shift%20preference%3A%0D%0A%0D%0APlease%20attach%20your%20resume%20before%20sending.%20Thanks%21%0D%0A"
-                       class="inline-block bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-2.5 px-6 rounded-lg text-base transition-all">
-                        Email Us Your Resume &rarr;
-                    </a>
+                <a href="mailto:customerservice@marblearms.com?subject=Job%20Application%20-%20Marble%20Arms&amp;body=Name%3A%0D%0APhone%20number%3A%0D%0AEmail%3A%0D%0AType%20of%20work%20%28Machine%20Operator%2C%20Machine%20Technical%20Resource%2C%20Assembly%2C%20Office/Admin%2C%20Leadership%29%3A%0D%0AShift%20preference%20%28Week%20Shift%20or%20Weekend%20Shift%29%3A%0D%0A%0D%0APlease%20attach%20your%20resume%20before%20sending.%20Thanks%21%0D%0A"
+                   class="block w-full text-center bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-4 px-8 rounded-lg text-lg transition-all border-b-4 border-hunters-orange-dark">
+                    Email Your Application &rarr;
+                </a>
+                <p class="text-sm text-gray-500 mt-3 text-center">Opens your email app with everything filled in.</p>
+
+                <div class="mt-8 pt-8 border-t border-gray-200">
+                    <h3 class="text-lg font-bold text-charcoal mb-4">What to include</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex gap-3"><span class="text-hunters-orange font-bold flex-shrink-0">&bull;</span><span><span class="font-semibold text-charcoal">Your name, phone number, and email</span> — the phone number is how we'll reach you.</span></li>
+                        <li class="flex gap-3"><span class="text-hunters-orange font-bold flex-shrink-0">&bull;</span><span><span class="font-semibold text-charcoal">The type of work you're after</span> — Machine Operator, Machine Technical Resource, Assembly, Office/Admin, or Leadership. Not sure? Say so, and we'll figure it out together.</span></li>
+                        <li class="flex gap-3"><span class="flex-shrink-0 text-hunters-orange font-bold">&bull;</span><span><span class="font-semibold text-charcoal">Week Shift or Weekend Shift</span> — whichever you'd prefer.</span></li>
+                        <li class="flex gap-3"><span class="text-hunters-orange font-bold flex-shrink-0">&bull;</span><span><span class="font-semibold text-charcoal">Your resume, attached</span> — helpful, but not required. Send the email either way and we'll call you.</span></li>
+                    </ul>
                 </div>
 
-                <div id="apply-form-wrap">
-                    <h2 class="text-2xl font-bold text-charcoal mb-2">Submit Your Application</h2>
-                    <p class="text-gray-600 mb-8">Takes about a minute. Everything below is what we need to get in touch — no account, no login.</p>
-
-                    <!-- Error message (shown if submission fails) -->
-                    <div id="apply-error" class="hidden bg-red-50 border border-red-200 rounded-lg p-6 text-center mb-6">
-                        <p id="apply-error-text" class="text-red-700">Something went wrong sending your application. Please try again, or <a href="mailto:customerservice@marblearms.com?subject=Job%20Application%20-%20Marble%20Arms&amp;body=Name%3A%0D%0APhone%20number%3A%0D%0AEmail%3A%0D%0AType%20of%20work%20you%27re%20interested%20in%3A%0D%0AAvailability%20%2F%20shift%20preference%3A%0D%0A%0D%0APlease%20attach%20your%20resume%20before%20sending.%20Thanks%21%0D%0A" class="underline font-semibold">email us your application</a> directly.</p>
-                        <p id="apply-error-detail" class="hidden text-xs text-red-600 mt-2 font-mono break-words"></p>
-                    </div>
-
-                    <form id="apply-form" action="https://api.web3forms.com/submit" method="POST">
-                        <input type="hidden" name="access_key" value="566ddee3-2403-4fb5-a35e-0c5629702f13">
-                        <input type="hidden" name="subject" value="New Job Application – Marble Arms">
-                        <input type="hidden" name="from_name" value="Marble Arms Careers Form">
-                        <!-- Honeypot for spam bots -->
-                        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-
-                        <!-- Name -->
-                        <div class="mb-5">
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name <span class="text-red-500">*</span></label>
-                            <input type="text" id="name" name="name" required autocomplete="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="First and last name">
-                        </div>
-
-                        <!-- Phone & Email -->
-                        <div class="grid sm:grid-cols-2 gap-5 mb-5">
-                            <div>
-                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone <span class="text-red-500">*</span></label>
-                                <input type="tel" id="phone" name="phone" required autocomplete="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="(906) 555-0123">
-                                <p class="text-xs text-gray-500 mt-1.5">This is how we'll reach you.</p>
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email <span class="text-red-500">*</span></label>
-                                <input type="email" id="email" name="email" required autocomplete="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="you@example.com">
-                            </div>
-                        </div>
-
-                        <!-- Area of interest -->
-                        <div class="mb-5">
-                            <label for="position" class="block text-sm font-medium text-gray-700 mb-2">What kind of work are you interested in?</label>
-                            <select id="position" name="position" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange bg-white">
-                                <option value="Open to anything">Open to anything</option>
-                                <option value="Machining / CNC">Machining / CNC</option>
-                                <option value="Assembly &amp; Finishing">Assembly &amp; Finishing</option>
-                                <option value="Quality &amp; Inspection">Quality &amp; Inspection</option>
-                                <option value="Maintenance">Maintenance</option>
-                                <option value="Shipping &amp; Warehouse">Shipping &amp; Warehouse</option>
-                                <option value="Engineering">Engineering</option>
-                                <option value="Office / Administrative">Office / Administrative</option>
-                            </select>
-                        </div>
-
-                        <!-- Resume note — uploads need a Web3Forms PRO plan, so resumes come by email.
-                             The mailto prefills subject and body so the applicant only has to
-                             fill the blanks and attach the file. -->
-                        <div class="mb-5 bg-gray-100 border-l-4 border-hunters-orange rounded-lg p-4">
-                            <p class="text-sm font-semibold text-charcoal mb-1">Sending a resume</p>
-                            <p class="text-sm text-gray-600 leading-relaxed mb-3">A resume isn't required — submit this form either way and we'll call you. If you'd like us to see one, email it over and we'll match it to your application.</p>
-                            <a href="mailto:customerservice@marblearms.com?subject=Job%20Application%20-%20Marble%20Arms&amp;body=Name%3A%0D%0APhone%20number%3A%0D%0AEmail%3A%0D%0AType%20of%20work%20you%27re%20interested%20in%3A%0D%0AAvailability%20%2F%20shift%20preference%3A%0D%0A%0D%0APlease%20attach%20your%20resume%20before%20sending.%20Thanks%21%0D%0A"
-                               class="inline-block bg-charcoal hover:bg-charcoal-light text-white font-bold py-2.5 px-5 rounded-lg text-sm transition-all">
-                                Email Us Your Resume &rarr;
-                            </a>
-                            <p class="text-xs text-gray-500 mt-2">Opens your email app with the questions already filled in.</p>
-                        </div>
-
-                        <!-- Optional note -->
-                        <div class="mb-8">
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Anything else we should know? <span class="text-gray-400 font-normal">(optional)</span></label>
-                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-hunters-orange focus:border-hunters-orange" placeholder="Experience, availability, shift preference, or anything you'd like to add"></textarea>
-                        </div>
-
-                        <button id="apply-submit-btn" type="submit" class="w-full bg-hunters-orange hover:bg-hunters-orange-dark text-white font-bold py-4 px-8 rounded-lg text-lg transition-all border-b-4 border-hunters-orange-dark disabled:opacity-60 disabled:cursor-not-allowed">
-                            Submit Application
-                        </button>
-                        <p class="text-sm text-gray-500 mt-4 text-center">Marble Arms is an equal opportunity employer.</p>
-                    </form>
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <p class="text-sm text-gray-500">Button didn't open anything? Email us at <a href="mailto:customerservice@marblearms.com" class="text-hunters-orange font-semibold hover:underline">customerservice@marblearms.com</a> with the details above.</p>
                 </div>
             </div>
         </div>
@@ -446,62 +380,5 @@
         })();
     </script>
 
-    <!-- Application Form Submission -->
-    <script>
-        (function () {
-            const form      = document.getElementById('apply-form');
-            const formWrap  = document.getElementById('apply-form-wrap');
-            const submit    = document.getElementById('apply-submit-btn');
-            const success   = document.getElementById('apply-success');
-            const error     = document.getElementById('apply-error');
-            const errorText = document.getElementById('apply-error-text');
-
-            const APPLY_MAILTO = 'mailto:customerservice@marblearms.com?subject=Job%20Application%20-%20Marble%20Arms&body=Name%3A%0D%0APhone%20number%3A%0D%0AEmail%3A%0D%0AType%20of%20work%20you%27re%20interested%20in%3A%0D%0AAvailability%20%2F%20shift%20preference%3A%0D%0A%0D%0APlease%20attach%20your%20resume%20before%20sending.%20Thanks%21%0D%0A';
-            const DEFAULT_ERROR = 'Something went wrong sending your application. Please try again, or <a href="' + APPLY_MAILTO + '" class="underline font-semibold">email us your application</a> directly.';
-
-            function showError(html, detail) {
-                errorText.innerHTML = html;
-                const d = document.getElementById('apply-error-detail');
-                if (d) {
-                    if (detail) {
-                        d.textContent = 'Details: ' + detail;
-                        d.classList.remove('hidden');
-                    } else {
-                        d.classList.add('hidden');
-                    }
-                }
-                error.classList.remove('hidden');
-                error.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                error.classList.add('hidden');
-                submit.disabled = true;
-                submit.textContent = 'Sending…';
-
-                try {
-                    const res = await fetch(form.action, {
-                        method: 'POST',
-                        body: new FormData(form),
-                        headers: { 'Accept': 'application/json' }
-                    });
-                    const data = await res.json();
-                    if (res.ok && data.success) {
-                        formWrap.classList.add('hidden');
-                        success.classList.remove('hidden');
-                        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    } else {
-                        throw new Error(data.message || 'Submission failed');
-                    }
-                } catch (err) {
-                    console.error('[MarbleForm] apply submit failed:', err.message);
-                    showError(DEFAULT_ERROR, err.message);
-                    submit.disabled = false;
-                    submit.textContent = 'Submit Application';
-                }
-            });
-        })();
-    </script>
 </body>
 </html>
