@@ -146,70 +146,36 @@
     </section>
 
     <!-- ─────────────────────────────────────────
-         EMPLOYEE TESTIMONIALS — HIDDEN UNTIL CONTENT IS READY
-
-         TO GO LIVE: delete the "REMOVE THIS LINE" marker lines directly
-         below and above the closing </section>, then fill in each
-         .testimonial-slide with a real photo (images/Careers/), quote,
-         name, and role. Add or remove slides freely — the dots and timer
-         adapt automatically. The slider JS is already in place at the
-         bottom of this file and no-ops while the section is absent.
+         EMPLOYEE TESTIMONIALS
+         TO ADD MORE: copy a .testimonial-slide block, drop a photo in
+         images/Culture and History/Testimonials/, and fill in the quote.
+         The dots and auto-advance timer appear automatically once there
+         is more than one slide.
     ───────────────────────────────────────── -->
-    <!-- REMOVE THIS LINE TO PUBLISH TESTIMONIALS
     <section class="py-12 md:py-16 steel-dark border-b-4 border-hunters-orange">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <p class="text-xs text-hunters-orange tracking-[0.25em] uppercase font-semibold mb-3 text-center">In Their Words</p>
-            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-8 md:mb-10 text-center">What It's Like to Work Here</h2>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-8 md:mb-10 text-center">What do you like most about working at Marble Arms?</h2>
 
             <div id="testimonials" class="relative">
                 <div id="testimonial-track" aria-live="polite">
 
-                    [Slide 1]
                     <div class="testimonial-slide" data-active="true">
-                        <div class="flex flex-col sm:flex-row items-center gap-6 md:gap-10">
-                            <div class="w-40 h-40 md:w-52 md:h-52 rounded-xl overflow-hidden flex-shrink-0 bg-charcoal-light">
-                                <img src="images/Careers/testimonial-1.jpg" alt="" class="w-full h-full object-cover" onerror="this.closest('div').classList.add('photo-placeholder');this.remove();">
+                        <div class="flex flex-col sm:flex-row items-center gap-8 md:gap-12">
+                            <div class="w-56 md:w-72 rounded-xl overflow-hidden flex-shrink-0 shadow-xl">
+                                <img src="images/Culture and History/Testimonials/testimonial-1-web.jpg" alt="A Marble Arms machinist at a CNC control panel" class="w-full h-auto block">
                             </div>
                             <blockquote class="text-center sm:text-left">
-                                <p class="text-lg md:text-2xl text-white leading-relaxed font-medium mb-4">&ldquo;[ PLACEHOLDER — replace with a real employee quote. ]&rdquo;</p>
-                                <footer class="text-hunters-orange font-bold">[ Employee Name ]<span class="block text-gray-400 font-medium text-sm mt-0.5">[ Job Title ] &middot; [ X ] years at Marble Arms</span></footer>
-                            </blockquote>
-                        </div>
-                    </div>
-
-                    [Slide 2]
-                    <div class="testimonial-slide">
-                        <div class="flex flex-col sm:flex-row items-center gap-6 md:gap-10">
-                            <div class="w-40 h-40 md:w-52 md:h-52 rounded-xl overflow-hidden flex-shrink-0 bg-charcoal-light">
-                                <img src="images/Careers/testimonial-2.jpg" alt="" class="w-full h-full object-cover" onerror="this.closest('div').classList.add('photo-placeholder');this.remove();">
-                            </div>
-                            <blockquote class="text-center sm:text-left">
-                                <p class="text-lg md:text-2xl text-white leading-relaxed font-medium mb-4">&ldquo;[ PLACEHOLDER — replace with a real employee quote. ]&rdquo;</p>
-                                <footer class="text-hunters-orange font-bold">[ Employee Name ]<span class="block text-gray-400 font-medium text-sm mt-0.5">[ Job Title ] &middot; [ X ] years at Marble Arms</span></footer>
-                            </blockquote>
-                        </div>
-                    </div>
-
-                    [Slide 3]
-                    <div class="testimonial-slide">
-                        <div class="flex flex-col sm:flex-row items-center gap-6 md:gap-10">
-                            <div class="w-40 h-40 md:w-52 md:h-52 rounded-xl overflow-hidden flex-shrink-0 bg-charcoal-light">
-                                <img src="images/Careers/testimonial-3.jpg" alt="" class="w-full h-full object-cover" onerror="this.closest('div').classList.add('photo-placeholder');this.remove();">
-                            </div>
-                            <blockquote class="text-center sm:text-left">
-                                <p class="text-lg md:text-2xl text-white leading-relaxed font-medium mb-4">&ldquo;[ PLACEHOLDER — replace with a real employee quote. ]&rdquo;</p>
-                                <footer class="text-hunters-orange font-bold">[ Employee Name ]<span class="block text-gray-400 font-medium text-sm mt-0.5">[ Job Title ] &middot; [ X ] years at Marble Arms</span></footer>
+                                <p class="text-xl md:text-3xl text-white leading-relaxed font-medium">&ldquo;People come first. Feels more like working with a family, not coworkers. Learning even at the cost of a mistake is still embraced.&rdquo;</p>
                             </blockquote>
                         </div>
                     </div>
                 </div>
 
-                [Dots]
                 <div id="testimonial-dots" class="flex justify-center gap-3 mt-8"></div>
             </div>
         </div>
     </section>
-    REMOVE THIS LINE TO PUBLISH TESTIMONIALS -->
 
     <!-- How to Apply -->
     <section class="py-12 md:py-16 grey-texture">
@@ -322,6 +288,12 @@
             const slides = Array.from(document.querySelectorAll('.testimonial-slide'));
             const dotWrap = document.getElementById('testimonial-dots');
             if (!root || slides.length === 0) return;
+
+            // A lone testimonial has nothing to navigate between — no dots.
+            if (slides.length < 2) {
+                dotWrap.remove();
+                return;
+            }
 
             const INTERVAL = 7000;
             const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
