@@ -70,14 +70,37 @@
         html { font-size: 16px; scroll-behavior: smooth; }
 
         /* Testimonial slider — slides stack in one grid cell and cross-fade */
-        #testimonial-track { display: grid; }
+        /* Slides share one cell, so the track is as tall as the longest quote.
+           Centring keeps the shorter ones from riding the top of that space. */
+        #testimonial-track { display: grid; align-items: center; }
+        /* The slide itself only carries visibility, and holds it until the
+           outgoing photo and quote have finished fading — otherwise the old
+           slide would vanish on the spot instead of dissolving. */
         .testimonial-slide {
             grid-area: 1 / 1;
-            opacity: 0;
             visibility: hidden;
-            transition: opacity 0.6s ease;
+            transition: visibility 0s linear 0.45s;
         }
-        .testimonial-slide[data-active="true"] { opacity: 1; visibility: visible; }
+        .testimonial-slide[data-active="true"] {
+            visibility: visible;
+            transition: visibility 0s linear 0s;
+        }
+        /* Photo leads, quote follows a beat behind */
+        .testimonial-photo,
+        .testimonial-quote {
+            opacity: 0;
+            transition: opacity 0.45s ease;
+        }
+        /* Transform stays in the list so the photo's hover-straighten still eases */
+        .testimonial-photo { transition: opacity 0.45s ease, transform 0.3s ease; }
+        .testimonial-slide[data-active="true"] .testimonial-photo {
+            opacity: 1;
+            transition: opacity 0.6s ease 0.1s, transform 0.3s ease;
+        }
+        .testimonial-slide[data-active="true"] .testimonial-quote {
+            opacity: 1;
+            transition: opacity 0.6s ease 0.25s;
+        }
         /* Dots sit on the orange band, so they read in white rather than orange */
         .testimonial-dot {
             width: 0.75rem;
@@ -90,7 +113,12 @@
         .testimonial-dot:hover { background-color: rgba(255,255,255,0.7); }
         .testimonial-dot[aria-selected="true"] { background-color: #ffffff; transform: scale(1.25); }
         @media (prefers-reduced-motion: reduce) {
-            .testimonial-slide { transition: none; }
+            .testimonial-slide,
+            .testimonial-photo,
+            .testimonial-quote,
+            .testimonial-slide[data-active="true"],
+            .testimonial-slide[data-active="true"] .testimonial-photo,
+            .testimonial-slide[data-active="true"] .testimonial-quote { transition: none; }
         }
 
         /* Timeline */
@@ -271,7 +299,7 @@
          photo in images/Culture and History/Testimonials/. Dots and
          auto-advance appear automatically once there is more than one.
     ───────────────────────────────────────── -->
-    <section id="careers" class="relative overflow-hidden bg-hunters-orange border-b-4 border-charcoal py-10 md:py-14 scroll-mt-24">
+    <section id="careers" class="relative overflow-hidden bg-hunters-orange border-b-4 border-charcoal py-14 md:py-20 scroll-mt-24">
         <!-- Oversized quote glyph, purely decorative -->
         <span aria-hidden="true" class="pointer-events-none select-none absolute -top-24 -left-8 md:left-2 font-extrabold leading-none text-white/15" style="font-size: 22rem;">&ldquo;</span>
         <!-- Diagonal sheen across the band -->
@@ -286,17 +314,29 @@
 
                         <div class="testimonial-slide" data-active="true">
                             <div class="flex flex-col sm:flex-row items-center gap-5 md:gap-8">
-                                <div class="w-28 md:w-36 flex-shrink-0 rounded-xl overflow-hidden shadow-2xl ring-4 ring-white/40 -rotate-2 hover:rotate-0 transition-transform duration-300">
+                                <div class="testimonial-photo w-32 md:w-44 lg:w-48 flex-shrink-0 rounded-xl overflow-hidden shadow-2xl ring-4 ring-white/40 -rotate-2 hover:rotate-0">
                                     <img src="images/Culture and History/Testimonials/testimonial-1-web.jpg" alt="A Marble Arms machinist at a CNC control panel" class="w-full h-auto block">
                                 </div>
-                                <blockquote class="text-center sm:text-left">
-                                    <p class="text-lg md:text-2xl font-bold text-white leading-snug">&ldquo;People come first. Feels more like working with a family, not coworkers. Learning even at the cost of a mistake is still embraced.&rdquo;</p>
-                                    <footer class="mt-3 flex items-center justify-center sm:justify-start gap-3">
+                                <blockquote class="testimonial-quote text-center sm:text-left">
+                                    <p class="text-xl md:text-2xl lg:text-3xl font-bold text-white leading-snug">&ldquo;People come first. Feels more like working with a family, not coworkers. Learning even at the cost of a mistake is still embraced.&rdquo;</p>
+                                    <footer class="mt-4 flex items-center justify-center sm:justify-start gap-3">
                                         <span class="h-px w-8 bg-white/50 flex-shrink-0"></span>
-                                        <span>
-                                            <span class="block text-sm font-extrabold uppercase tracking-[0.15em] text-white">Jeremy M.</span>
-                                            <span class="block text-xs font-semibold text-charcoal/80 mt-0.5">Machine Technical Resource</span>
-                                        </span>
+                                        <span class="text-base md:text-lg font-extrabold uppercase tracking-[0.15em] text-white">Jeremy</span>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide" data-active="false">
+                            <div class="flex flex-col sm:flex-row items-center gap-5 md:gap-8">
+                                <div class="testimonial-photo w-32 md:w-44 lg:w-48 flex-shrink-0 rounded-xl overflow-hidden shadow-2xl ring-4 ring-white/40 -rotate-2 hover:rotate-0">
+                                    <img src="images/Culture and History/Testimonials/testimonial-2-web.jpg" alt="A Marble Arms purchasing lead entering orders on a laptop" class="w-full h-auto block">
+                                </div>
+                                <blockquote class="testimonial-quote text-center sm:text-left">
+                                    <p class="text-xl md:text-2xl lg:text-3xl font-bold text-white leading-snug">&ldquo;Marbles sees me as a person, not just a worker. When my life changed, they worked with me to adjust my schedule. Never once did I worry I&rsquo;d be fired or told &lsquo;we just can&rsquo;t do that.&rsquo; They support you and your family&rsquo;s wellbeing.&rdquo;</p>
+                                    <footer class="mt-4 flex items-center justify-center sm:justify-start gap-3">
+                                        <span class="h-px w-8 bg-white/50 flex-shrink-0"></span>
+                                        <span class="text-base md:text-lg font-extrabold uppercase tracking-[0.15em] text-white">Becky</span>
                                     </footer>
                                 </blockquote>
                             </div>
@@ -309,7 +349,7 @@
                 <!-- Apply CTA -->
                 <div class="text-center lg:text-left lg:border-l-4 lg:border-charcoal/30 lg:pl-10">
                     <h2 class="text-2xl md:text-3xl font-extrabold text-charcoal mb-3">Work With Us</h2>
-                    <p class="text-white font-medium leading-relaxed mb-6">When you work here, your name is on every part you touch.</p>
+                    <p class="text-white font-medium leading-relaxed mb-6">We&rsquo;re always looking for great people to join the team.</p>
                     <a href="careers.html" class="inline-block bg-charcoal hover:bg-charcoal-light text-white font-bold py-3 px-7 rounded-lg text-base transition-all">
                         Apply Now &rarr;
                     </a>
@@ -682,10 +722,11 @@
                 return;
             }
 
-            const INTERVAL = 7000;
+            const INTERVAL = 8000;
             const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             let index = 0;
             let timer = null;
+            let inView = true;
 
             // Build one dot per slide
             const dots = slides.map((_, i) => {
@@ -707,8 +748,12 @@
             }
 
             function start() {
-                // A single testimonial has nothing to rotate to.
+                // A single testimonial has nothing to rotate to. Nor is there any
+                // point advancing while the band is scrolled away or the tab is in
+                // the background — the fade would burn off unseen and the next quote
+                // would simply be sitting there, looking like the fade never ran.
                 if (timer || reduceMotion || slides.length < 2) return;
+                if (!inView || document.hidden) return;
                 timer = setInterval(() => show(index + 1), INTERVAL);
             }
             function stop() {
@@ -723,6 +768,17 @@
             root.addEventListener('focusin', stop);
             root.addEventListener('focusout', start);
             document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+
+            // Only run the timer while the band is actually on screen, so every
+            // change of quote is one the visitor sees animate.
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        inView = entry.isIntersecting;
+                        inView ? start() : stop();
+                    });
+                }, { threshold: 0.35 }).observe(root);
+            }
 
             show(0);
             start();
